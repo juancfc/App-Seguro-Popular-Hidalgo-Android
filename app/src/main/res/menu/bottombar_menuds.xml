@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottomBarItemInfo"
+        android:icon="@drawable/ic_account_box_white_18dp"
+        android:title="Usuario"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/bottomBarItemDependenciasSalud"
+        android:icon="@drawable/ic_map_white_18dp"
+        android:title="Atención médica" />
+    <item
+        android:id="@+id/bottomBarItemCentrosAfiliacion"
+        android:icon="@drawable/ic_map_white_18dp"
+        android:title="Centros de afiliación" />
+    <item
+        android:id="@+id/bottomBarItemMas"
+        android:icon="@drawable/ic_reorder_white_18dp"
+        android:title="Más" />
+</menu>

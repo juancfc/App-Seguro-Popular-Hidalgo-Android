@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottomBarItemFisico"
+        android:icon="@drawable/fisico"
+        android:title="Físico" />
+    <item
+        android:id="@+id/bottomBarItemEmocional"
+        android:icon="@drawable/emocional"
+        android:title="Emocional" />
+</menu>

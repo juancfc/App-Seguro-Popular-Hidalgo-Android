@@ -1,0 +1,100 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.repss.apprepss.SolicitudAtencionFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/rltLayout2">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/barratop" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quejas, sugerencias o felicitaciones sobre el servicio recibido"
+                android:layout_gravity="center"
+                android:textSize="30dp"
+                android:textAlignment="center"
+                />
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:ems="10"
+                    android:hint="Información de contacto"
+                    android:id="@+id/edtContacto" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:ems="10"
+                    android:hint="Solicitud..."
+                    android:id="@+id/edtDenuncia" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                style="@style/Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enviar Solicitud"
+                android:id="@+id/btnEnviarDenuncia"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nota"
+                android:layout_margin="10dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Atención telefónica"
+                android:layout_gravity="center"
+                android:textSize="25dp"
+                android:textAlignment="center"
+                />
+
+            <ImageView
+                android:id="@+id/imvPhone"
+                android:layout_margin="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:src="@drawable/phone"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.repss.apprepss.BeneficiosActivity">
+
+
+    <Button
+        android:id="@+id/causesButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/patone"
+        android:text="CAUSES"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/gastosCatastroficosButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/patone"
+        android:text="Fondo de protección contra gastos catastróficos"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/seguroMedicoButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/patone"
+        android:text="Seguro médico siglo XXI"
+        android:textColor="@color/white" />
+</LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.repss.apprepss.NoAfiliado">
+
+    <Button
+        android:id="@+id/requisitosButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Requisitos" />
+
+    <Button
+        android:id="@+id/centrosAfiliacionButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Centros de afiliación" />
+
+    <Button
+        android:id="@+id/causesButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CAUSES" />
+</LinearLayout>
