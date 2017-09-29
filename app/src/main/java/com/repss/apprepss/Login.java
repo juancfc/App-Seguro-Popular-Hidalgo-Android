@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,6 +52,8 @@ public class Login extends AppCompatActivity {
 
     EditText edtPoliza,edtCURP;
     Button btnLogin;
+
+    FloatingActionButton centrosAfiliacionFAB, requisitosFAB, beneficiosFAB;
     RelativeLayout rltLayoutMain;
 
     TextView txvIrCurp, noAfiliadoTextView;
@@ -73,6 +76,7 @@ public class Login extends AppCompatActivity {
         //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //requestsSP = new RequestsSP();
+        //getActionBar().hide();
 
 
         insertCA(this);
@@ -88,7 +92,10 @@ public class Login extends AppCompatActivity {
         edtCURP = (EditText) findViewById(R.id.edtCURP);
         btnLogin = (Button)findViewById(R.id.btnLogin);
         txvIrCurp = (TextView)findViewById(R.id.txvIrCURP);
-        noAfiliadoTextView = (TextView)findViewById(R.id.noAfiliadoTextView);
+        centrosAfiliacionFAB = (FloatingActionButton)findViewById(R.id.centrosAfiliacionFAB);
+        requisitosFAB = (FloatingActionButton)findViewById(R.id.requisitosFAB);
+        beneficiosFAB = (FloatingActionButton)findViewById(R.id.beneficiosFAB);
+        //noAfiliadoTextView = (TextView)findViewById(R.id.noAfiliadoTextView);
 
 
         txvIrCurp.setOnClickListener(new View.OnClickListener() {
@@ -101,12 +108,33 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        noAfiliadoTextView.setOnClickListener(new View.OnClickListener() {
+        centrosAfiliacionFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent( Login.this, MAOS.class ));
+            }
+        });
+
+        requisitosFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Login.this, RequisitosActivity.class));
+            }
+        });
+
+        beneficiosFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Login.this, BeneficiosActivity.class));
+            }
+        });
+
+        /*noAfiliadoTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Login.this, NoAfiliado.class));
             }
-        });
+        });*/
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {

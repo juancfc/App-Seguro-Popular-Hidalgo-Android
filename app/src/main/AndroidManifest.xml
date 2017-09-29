@@ -129,10 +129,14 @@
         </provider>
 
         <activity android:name=".TerminosActivity" />
-        <activity android:name=".AvisoPrivacidad"></activity>
+        <activity android:name=".AvisoPrivacidad" />
         <activity android:name=".InformacionGestor" />
         <activity android:name=".NoAfiliado" />
-        <activity android:name=".MAOS"></activity>
+        <activity android:name=".MAOS" />
+        <activity
+            android:name=".Introduccion"
+            android:label="@string/title_activity_introduccion"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

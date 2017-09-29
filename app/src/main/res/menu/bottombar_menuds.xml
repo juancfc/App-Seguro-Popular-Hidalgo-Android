@@ -4,19 +4,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/bottomBarItemInfo"
-        android:icon="@drawable/ic_account_box_white_18dp"
+        android:icon="@mipmap/ic_usuario"
         android:title="Usuario"
         app:showAsAction="never" />
     <item
         android:id="@+id/bottomBarItemDependenciasSalud"
-        android:icon="@drawable/ic_map_white_18dp"
+        android:icon="@mipmap/ic_atencion"
         android:title="Atención médica" />
     <item
         android:id="@+id/bottomBarItemCentrosAfiliacion"
-        android:icon="@drawable/ic_map_white_18dp"
+        android:icon="@mipmap/ic_atencion"
         android:title="Centros de afiliación" />
     <item
         android:id="@+id/bottomBarItemMas"
-        android:icon="@drawable/ic_reorder_white_18dp"
+        android:icon="@mipmap/ic_mas"
         android:title="Más" />
 </menu>
