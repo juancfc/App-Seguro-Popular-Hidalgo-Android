@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -39,7 +41,40 @@ public class MainActivity extends AppCompatActivity {
 
         insertCS(this);
 
-        mBottomBar = BottomBar.attach(this, savedInstanceState);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+
+
+
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                final FragmentManager fragmentManager = getSupportFragmentManager();
+                final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                switch (item.getItemId()) {
+                    case R.id.bottomBarItemInfo:
+                        fragmentTransaction.replace(R.id.activity_main, usuario);
+                        fragmentTransaction.commit();
+                        return true;
+                    case R.id.bottomBarItemDependenciasSalud:
+                        fragmentTransaction.replace(R.id.activity_main, unidades);
+                        miSave.setVisible(true);
+                        fragmentTransaction.commit();
+                        return true;
+                    case R.id.bottomBarItemCentrosAfiliacion:
+                        fragmentTransaction.replace(R.id.activity_main, afiliacion);
+                        miSave.setVisible(true);
+                        fragmentTransaction.commit();
+                        return true;
+                    case R.id.bottomBarItemMas:
+                        fragmentTransaction.replace(R.id.activity_main, opciones);
+                        miSave.setVisible(false);
+                        fragmentTransaction.commit();
+                        return true;
+                }
+                return false;
+            }
+        });
+        /*mBottomBar = BottomBar.attach(this, savedInstanceState);
         mBottomBar.noTopOffset();
         mBottomBar.setMaxFixedTabs(2);
 
@@ -84,7 +119,9 @@ public class MainActivity extends AppCompatActivity {
                     lnrLayoutOpciones.setVisibility(View.VISIBLE);
                     rltLayoutMapa.setVisibility(View.GONE);
                 }*/
-            }
+
+            /*
+            ]
             @Override
             public void onMenuTabReSelected(@IdRes int menuItemId) {
                 if (menuItemId == R.id.bottomBarItemDependenciasSalud) {
@@ -98,7 +135,9 @@ public class MainActivity extends AppCompatActivity {
         mBottomBar.mapColorForTab(0, "#ba0c2f");
         mBottomBar.mapColorForTab(1,"#ba0c2f");
         mBottomBar.mapColorForTab(2, "#ba0c2f");
-        mBottomBar.mapColorForTab(3,"#ba0c2f");
+        mBottomBar.mapColorForTab(3,"#ba0c2f");*/
+
+            navigation.setSelectedItemId(R.id.bottomBarItemInfo);
     }
 
 

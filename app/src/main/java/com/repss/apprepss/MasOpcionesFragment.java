@@ -21,9 +21,13 @@ import android.widget.ListView;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.microsoft.windowsazure.messaging.NotificationHub;
 
+import java.util.ArrayList;
+
 public class MasOpcionesFragment extends Fragment {
 
     AppSettings objAppSettings = new AppSettings();
+
+    MasOpcionesAdapter opcionesAdapter;
 
     public MasOpcionesFragment() {
         // Required empty public constructor
@@ -36,20 +40,27 @@ public class MasOpcionesFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_mas_opciones, container, false);
 
         ListView masOpcionesListView = (ListView)view.findViewById(R.id.masOpcionesListView);
-        String[] tableItems = new String[] {
-                "Quejas, sugerencias o felicitaciones sobre el servicio recibido",
-                "Notificaciones",
-                "¿Cómo me siento?",
-                "Favoritos",
-                "Términos y condiciones",
-                "Aviso de privacidad",
-                "Cerrar sesión"
-        };
+        ArrayList<String> tableItems = new ArrayList<String>();
+        tableItems.add("Quejas, sugerencias o felicitaciones sobre el servicio recibido");
+        tableItems.add("Notificaciones");
+        tableItems.add("¿Cómo me siento?");
+        tableItems.add("Favoritos");
+        tableItems.add("Términos y condiciones");
+        tableItems.add("Aviso de privacidad");
+        tableItems.add("Cerrar sesión");
 
-        ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, tableItems);
+        ArrayList<Integer> tableIconos = new ArrayList<Integer>();
+        tableIconos.add(R.mipmap.ic_quejas);
+        tableIconos.add(R.mipmap.ic_notificacion);
+        tableIconos.add(R.mipmap.ic_como_me_siento);
+        tableIconos.add(R.mipmap.ic_favoritos);
+        tableIconos.add(R.mipmap.ic_terminos);
+        tableIconos.add(R.mipmap.ic_aviso_privacidad);
+        tableIconos.add(R.mipmap.ic_cerrar_sesion);
 
-        masOpcionesListView.setAdapter(itemsAdapter);
+        opcionesAdapter = new MasOpcionesAdapter(getContext(),tableItems, tableIconos);
+
+        masOpcionesListView.setAdapter(opcionesAdapter);
 
         masOpcionesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

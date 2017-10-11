@@ -99,18 +99,18 @@ public class UsuarioFragment extends Fragment {
         txvUserEdad = (TextView)view.findViewById(R.id.txvUserEdad);
 
         //Información de usuario
-        txvUserFolio.setText("Folio: " + settings.getString("userFolio",""));
-        txvUserConsecutivo.setText("Número consecutivo: " + settings.getString("userConsecutivo",""));
-        txvUserNombres.setText("Nombre: " + settings.getString("userNombres",""));
-        txvUserApellidoPaterno.setText("Apellido paterno: " + settings.getString("userApellidoPaterno",""));
-        txvUserApellidoMaterno.setText("Apellido materno: " + settings.getString("userApellidoMaterno",""));
-        txvUserCurp.setText("CURP: " + settings.getString("userCURP",""));
-        txvUserFechaVencimiento.setText("Fecha de Vencimiento: " + settings.getString("userFechaVencimiento",""));
+        txvUserFolio.setText(settings.getString("userFolio",""));
+        txvUserConsecutivo.setText(settings.getString("userConsecutivo",""));
+        txvUserNombres.setText(settings.getString("userNombres",""));
+        txvUserApellidoPaterno.setText(settings.getString("userApellidoPaterno",""));
+        txvUserApellidoMaterno.setText(settings.getString("userApellidoMaterno",""));
+        txvUserCurp.setText(settings.getString("userCURP",""));
+        txvUserFechaVencimiento.setText(settings.getString("userFechaVencimiento",""));
         txvUserDependenciaSalud.setText(
-                Html.fromHtml("<u>Dependencia de salud correspondiente: " + settings.getString("userDependenciaSalud","") + "</u>"),
+                Html.fromHtml("<u>" + settings.getString("userDependenciaSalud","") + "</u>"),
                 TextView.BufferType.SPANNABLE);
-        txvUserSexo.setText("Sexo: " + settings.getString("userSexo",""));
-        txvUserEdad.setText("Edad: " + settings.getString("userEdad",""));
+        txvUserSexo.setText(settings.getString("userSexo",""));
+        txvUserEdad.setText(settings.getString("userEdad",""));
 
         //Captura Póliza
         File dir=
