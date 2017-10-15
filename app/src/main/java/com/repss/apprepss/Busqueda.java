@@ -12,18 +12,25 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+/**
+ * Activity donde se realiza la búsqueda de centros de afiliacion o unidades de salud
+ */
 public class Busqueda extends AppCompatActivity {
 
     DbHelper helper;
     Cursor cursor;
-    CentroAfiliación centroAfiliación;
+    CentroAfiliacion centroAfiliacion;
     DependenciaSalud dependenciaSalud;
-    ArrayList<CentroAfiliación> lista = new ArrayList<CentroAfiliación>();
+    ArrayList<CentroAfiliacion> lista = new ArrayList<CentroAfiliacion>();
     ArrayList<DependenciaSalud> listaDS = new ArrayList<>();
     BusquedaAdapter mAdapterBusqueda;
     AfiliacionAdapter mAdapterAfiliacion;
     android.widget.SearchView etxFindWarehouse;
 
+    /**
+     * Se obtiene la lista de centros de afiliacion y unidades de salud, se muestra la lista dependiendo el mapa que se habia visualizado, eventos para la busqueda de los mismo o de seleccionar algun item de la lista para navegar a otra activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,23 +46,22 @@ public class Busqueda extends AppCompatActivity {
 
         final SQLiteDatabase db = helper.getReadableDatabase();
 
-        //Instruccion para realizar la consulta y almacenarlo en un cursor
         cursor = db.rawQuery(" SELECT * FROM centros_afiliacion;", null);
 
         while(cursor.moveToNext()){
-            centroAfiliación = new CentroAfiliación();
-            centroAfiliación.id = Integer.valueOf(cursor.getString(0));
-            centroAfiliación.Nombre = cursor.getString(1);
-            centroAfiliación.Direccion = cursor.getString(2);
-            centroAfiliación.Telefono = cursor.getString(3);
-            centroAfiliación.Responsable = cursor.getString(4);
-            centroAfiliación.TelefonoResponsable = cursor.getString(5);
-            centroAfiliación.Horario = cursor.getString(6);
-            centroAfiliación.Correo = cursor.getString(7);
-            centroAfiliación.Latitud = cursor.getString(8);
-            centroAfiliación.Longitud = cursor.getString(9);
+            centroAfiliacion = new CentroAfiliacion();
+            centroAfiliacion.id = Integer.valueOf(cursor.getString(0));
+            centroAfiliacion.Nombre = cursor.getString(1);
+            centroAfiliacion.Direccion = cursor.getString(2);
+            centroAfiliacion.Telefono = cursor.getString(3);
+            centroAfiliacion.Responsable = cursor.getString(4);
+            centroAfiliacion.TelefonoResponsable = cursor.getString(5);
+            centroAfiliacion.Horario = cursor.getString(6);
+            centroAfiliacion.Correo = cursor.getString(7);
+            centroAfiliacion.Latitud = cursor.getString(8);
+            centroAfiliacion.Longitud = cursor.getString(9);
 
-            lista.add(centroAfiliación);
+            lista.add(centroAfiliacion);
         }
 
         cursor = db.rawQuery(" SELECT * FROM dependencias_salud;", null);
@@ -174,9 +180,9 @@ public class Busqueda extends AppCompatActivity {
         lstBusquedaAfiliacion.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                CentroAfiliación ca = (CentroAfiliación) lstBusquedaAfiliacion.getItemAtPosition(position);
+                CentroAfiliacion ca = (CentroAfiliacion) lstBusquedaAfiliacion.getItemAtPosition(position);
 
-                for(CentroAfiliación afiliacion: lista){
+                for(CentroAfiliacion afiliacion: lista){
                     if(ca.Nombre.equals(afiliacion.Nombre)){
                         Intent detalles = new Intent(Busqueda.this, DependenciaDetalles.class);
                         detalles.putExtra("name", afiliacion.Nombre);

@@ -32,6 +32,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Se muestra un mapa con la ubicacion de la unidad de salud y muestra los detalle del mismo
+ */
 public class DependenciaSaludDetalles extends AppCompatActivity implements OnMapReadyCallback {
 
 
@@ -51,6 +54,10 @@ public class DependenciaSaludDetalles extends AppCompatActivity implements OnMap
 
     int id;
 
+    /**
+     * Muestra los detalles de la unidad de salud en la vista
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,6 +117,9 @@ public class DependenciaSaludDetalles extends AppCompatActivity implements OnMap
         });
     }
 
+    /**
+     * Se prepara la lista para mostrar la información por secciones
+     */
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
@@ -163,6 +173,10 @@ public class DependenciaSaludDetalles extends AppCompatActivity implements OnMap
     }
 
 
+    /**
+     * Se muestra ek mapa con la ubiaccion de la unidad de salud y agrega un marcador
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         googleMap.getUiSettings().setScrollGesturesEnabled(false);

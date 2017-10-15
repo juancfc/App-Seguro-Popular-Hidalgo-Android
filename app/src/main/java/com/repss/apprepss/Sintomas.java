@@ -1,7 +1,7 @@
 package com.repss.apprepss;
 
 /**
- * Created by maste on 02/09/2016.
+ * Propiedades del objeto Sintomas
  */
 public class Sintomas {
 

@@ -1,9 +1,11 @@
 package com.repss.apprepss;
 
 /**
- * Created by maste on 12/05/2016.
+ * Propiedades del objeto CentroAfiliacion
  */
-public class CentroAfiliación {
+
+public class CentroAfiliacion {
+
     int id;
     String Nombre;
     String Direccion;
@@ -15,10 +17,10 @@ public class CentroAfiliación {
     String Latitud;
     String Longitud;
 
-    public CentroAfiliación() {
+    public CentroAfiliacion() {
     }
 
-    public CentroAfiliación(String nombre) {
+    public CentroAfiliacion(String nombre) {
         Nombre = nombre;
     }
 

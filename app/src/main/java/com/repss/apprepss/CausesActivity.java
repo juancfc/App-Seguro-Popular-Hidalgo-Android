@@ -20,6 +20,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Clase que muestra la lista con todos los padecimientos con los que cuenta el cada uno de los programas de beneficios con los que se cuenta
+ */
 public class CausesActivity extends AppCompatActivity {
 
     Toolbar causesToolbar;
@@ -40,6 +43,9 @@ public class CausesActivity extends AppCompatActivity {
     List<String> listDataHeaderSeguroMedico;
     HashMap<String, List<String>> listDataChildSeguroMedico;
 
+    /**
+     * Dependiendo la opcion seleccionada en el activity anterior muestra una lista con los padecimientos
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -73,6 +79,11 @@ public class CausesActivity extends AppCompatActivity {
         lstCauses.setAdapter(mAdapter);
     }
 
+    /**
+     * Se asignan los datos a la lista
+     * @param listaBeneficios lista con los beneficios
+     * @param opcion opcion de beneficio
+     */
     private void prepareListData(ArrayList<Causes> listaBeneficios, int opcion) {
 
         listDataHeaderCauses = new ArrayList<String>();
@@ -329,15 +340,17 @@ public class CausesActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }*/
 
+    /**
+     * Se crea el un menu en la toolbar y se gestiona el evento click
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.unidades_salud_menu, menu);
         search = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
-        //((EditText)searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text)).setTextColor(Color.WHITE);
-
-        //searchView.setQueryHint("");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

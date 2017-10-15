@@ -22,6 +22,9 @@ import com.repss.apprepss.R;
 import java.util.ArrayList;
 
 
+/**
+ * Fragmnto para mostrar la lista de unidades marcadas como favoritos
+ */
 public class FavoritosFragment extends Fragment {
 
     DbHelper helper;
@@ -30,11 +33,13 @@ public class FavoritosFragment extends Fragment {
     ArrayList<DependenciaSalud> listaDependenciaSalud = new ArrayList<DependenciaSalud>();
     BusquedaAdapter mAdapterBusqueda;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
+    /**
+     * Se muestra la lista de favoritos y se envia por la navegacion la informacion de estos
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return la vista
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

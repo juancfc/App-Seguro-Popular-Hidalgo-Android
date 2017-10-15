@@ -15,7 +15,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- * Created by maste on 08/06/2016.
+ * Se manda correo electrónico utilizando el servicio de gmail
  */
 public class SendMail extends AsyncTask<Void,Void,Void> {
 
@@ -29,8 +29,6 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
     private String subject;
     private String message;
 
-    //Progressdialog to show while sending email
-    //private ProgressDialog progressDialog;
 
     //Class Constructor
     public SendMail(Context context, String email, String subject, String message, EditText editTextContacto, EditText editTextDenuncia){
@@ -46,14 +44,11 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        //progressDialog = ProgressDialog.show(context,"Sending message","Please wait...",false,false);
     }
 
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        //progressDialog.dismiss();
-        //Showing a success message
         Toast.makeText(context,"Solicitud enviada",Toast.LENGTH_LONG).show();
 
         edtContacto.setText("");
@@ -78,7 +73,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
                 new javax.mail.Authenticator() {
                     //Authenticating the password
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("desarrolloprospectiva@gmail.com", "Prospectiva123");
+                        return new PasswordAuthentication("EMAIL", "PASSWORD");
                     }
                 });
 
@@ -87,7 +82,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
             MimeMessage mm = new MimeMessage(session);
 
             //Setting sender address
-            mm.setFrom(new InternetAddress("desarrolloprospectiva@gmail.com"));
+            mm.setFrom(new InternetAddress("EMAIL"));
             //Adding receiver
             mm.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
             //Adding subject

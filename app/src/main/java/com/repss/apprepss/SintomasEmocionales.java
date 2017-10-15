@@ -1,7 +1,7 @@
 package com.repss.apprepss;
 
 /**
- * Created by maste on 14/11/2016.
+ * Propiedades del objeto SintomasEmocionales con sus getters and setters
  */
 public class SintomasEmocionales {
 

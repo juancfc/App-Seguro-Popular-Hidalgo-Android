@@ -3,9 +3,27 @@ package com.repss.apprepss;
 import android.content.SharedPreferences;
 
 /**
- * Created by maste on 30/05/2016.
+ * Se guardan o borran estos datos en la memoria de la app
  */
 public class AppSettings {
+
+    /**
+     * Se guarda la información en la memoria de la app
+     * @param settings Shared preferences
+     * @param folio folio del  afiliado
+     * @param consecutivo numero consecutivo
+     * @param nombres nombre
+     * @param apellidoPaterno apellido paterno
+     * @param apellidoMaterno apellido materno
+     * @param CURP CURP
+     * @param status estado de la poliza
+     * @param dependenciaSalud dependencia de salud que le corresponde
+     * @param CLUES CLUES de la dependencia de salud
+     * @param fechaVencimiento fecha de vencimiento de la poliza
+     * @param sexo sexo
+     * @param edad edad
+     * @param tag tag que le corresponde al usuario para las notificaciones
+     */
     public void SaveLoginInfo(SharedPreferences settings,String folio, String consecutivo, String nombres, String apellidoPaterno, String apellidoMaterno, String CURP, String status, String dependenciaSalud,String CLUES, String fechaVencimiento, String sexo, String edad, String tag){
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("userSesion",true);
@@ -26,6 +44,10 @@ public class AppSettings {
         editor.apply();
     }
 
+    /**
+     * Se borran los datos de la memoria de la app
+     * @param settings shared preferences
+     */
     public void CleanSession (SharedPreferences settings){
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("userSesion",false);

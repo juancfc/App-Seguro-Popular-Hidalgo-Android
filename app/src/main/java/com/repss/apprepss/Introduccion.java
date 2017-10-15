@@ -25,23 +25,18 @@ import android.widget.TextView;
 
 public class Introduccion extends AppCompatActivity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
+
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
+
     private ViewPager mViewPager;
     private Button anteriorButton, siguienteButton, terminarButton;
 
+    /**
+     * Control del manejo de los fragmentos
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,10 +48,6 @@ public class Introduccion extends AppCompatActivity {
             Intent properties = new Intent(Introduccion.this, Login.class);
             startActivity(properties);
         }
-
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         anteriorButton = (Button)findViewById(R.id.anteriorButton);
@@ -169,24 +160,18 @@ public class Introduccion extends AppCompatActivity {
 
     }
 
-
-
     /**
-     * A placeholder fragment containing a simple view.
+     * Fragmento de una seccion
      */
     public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
         }
 
         /**
-         * Returns a new instance of this fragment for the given section
-         * number.
+         * Regresa una nueva instacia de este fragmento del numero de la seccion
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
@@ -196,6 +181,13 @@ public class Introduccion extends AppCompatActivity {
             return fragment;
         }
 
+        /**
+         * Se asigna la imagen de ka seccion del tutorial
+         * @param inflater
+         * @param container
+         * @param savedInstanceState
+         * @return la vista
+         */
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -252,8 +244,7 @@ public class Introduccion extends AppCompatActivity {
     }
 
     /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
+     * Regresa un fragment correspondiente a una de las secciones
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -261,19 +252,30 @@ public class Introduccion extends AppCompatActivity {
             super(fm);
         }
 
+        /**
+         * Regresala posicion de un fragment
+         * @param position
+         * @return posicion del fragment
+         */
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
             return PlaceholderFragment.newInstance(position + 1);
         }
 
+        /**
+         * Regresa el numero de fragments
+         * @return numero de fragments
+         */
         @Override
         public int getCount() {
-            // Show 3 total pages.
             return 8;
         }
 
+        /**
+         * Regresa el titulo del fragment
+         * @param position
+         * @return titulo del fragment
+         */
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {

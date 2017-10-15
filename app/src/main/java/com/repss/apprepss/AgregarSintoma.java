@@ -8,11 +8,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * Activity para agregar síntomas emocionales
+ */
 public class AgregarSintoma extends AppCompatActivity {
 
     DbHelper helper;
     DataBaseManager manager;
 
+    /**
+     * Se crea la vista y se obtiene acceso a ella, se guarda el sintoma en una base de datos local al accionar el evento click del button
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

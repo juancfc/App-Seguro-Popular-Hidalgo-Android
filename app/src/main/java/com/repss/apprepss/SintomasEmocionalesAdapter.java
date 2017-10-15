@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by maste on 14/11/2016.
+ * Adaptador para el llenado de un control con items
  */
 public class SintomasEmocionalesAdapter extends BaseAdapter {
 
@@ -19,27 +19,53 @@ public class SintomasEmocionalesAdapter extends BaseAdapter {
     ArrayList<SintomasEmocionales> sintomasEmocionales;
     ArrayList<SintomasEmocionales> filterList;
 
+    /**
+     * Se asignan los paramétros a variables locales
+     * @param ctx
+     * @param sintomasEmocionales
+     */
     public SintomasEmocionalesAdapter(Context ctx, ArrayList<SintomasEmocionales> sintomasEmocionales) {
         this.c = ctx;
         this.sintomasEmocionales = sintomasEmocionales;
         this.filterList = sintomasEmocionales;
     }
 
+    /**
+     * regresa el tamaño de la lista
+     * @return tamaño de la lista
+     */
     @Override
     public int getCount() {
         return sintomasEmocionales.size();
     }
 
+    /**
+     * regresa el objeto
+     * @param position posición del objeto
+     * @return el objeto
+     */
     @Override
     public Object getItem(int position) {
         return sintomasEmocionales.get(position);
     }
 
+    /**
+     * regresa el id del objeto
+     * @param position posición del objeto
+     * @return el id del objeto
+     */
     @Override
     public long getItemId(int position) {
         return sintomasEmocionales.indexOf(getItem(position));
     }
 
+    /**
+     * Se asignan los valores a los controles de la vista
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return la vista del item
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

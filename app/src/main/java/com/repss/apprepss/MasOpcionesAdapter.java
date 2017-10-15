@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by DIEGOLEON on 29/09/2017.
+ * Se gestiona el llenado de items
  */
 
 public class MasOpcionesAdapter extends BaseAdapter {
@@ -24,27 +24,55 @@ public class MasOpcionesAdapter extends BaseAdapter {
     ArrayList<String> opciones;
     ArrayList<Integer> iconos;
 
+
+    /**
+     * Se asignan los parametros a variables locales
+     * @param ctx
+     * @param opciones
+     * @param iconos
+     */
     public MasOpcionesAdapter(Context ctx, ArrayList<String> opciones,ArrayList<Integer> iconos) {
         this.ctx = ctx;
         this.opciones = opciones;
         this.iconos = iconos;
     }
 
+    /**
+     * Regresa el tamaño de la lista
+     * @return tamaño de la lista
+     */
     @Override
     public int getCount() {
         return opciones.size();
     }
 
+    /**
+     * Regresa el item ubicado en la posición designada en el parámetro
+     * @param i posición del item
+     * @return el item
+     */
     @Override
     public Object getItem(int i) {
         return opciones.get(i);
     }
 
+    /**
+     * Regresa el id del item
+     * @param i posición del item
+     * @return el id del item
+     */
     @Override
     public long getItemId(int i) {
         return opciones.indexOf(getItem(i));
     }
 
+    /**
+     * Se asignan los valores a los controles del item
+     * @param i
+     * @param view
+     * @param viewGroup
+     * @return la vista del item
+     */
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = (LayoutInflater)ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

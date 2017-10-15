@@ -6,8 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Menu que muestra los beneficios con los que cuenta el afiliado
+ */
 public class BeneficiosActivity extends AppCompatActivity {
 
+    /**
+     * Eventos para la navegacion a las activities correspondientes
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

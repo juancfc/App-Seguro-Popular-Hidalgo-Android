@@ -8,16 +8,24 @@ import java.util.List;
  */
 
 public class Constants {
+
     public static ArrayList<Causes> causes;
     public static ArrayList<String> intervenciones;
 
+    /**
+     * Se iniciañizan las listas
+     */
     public Constants(){
 
         causes = new ArrayList<>();
         intervenciones = new ArrayList<>();
 
     }
-    
+
+    /**
+     * Se agregan las enfermedades a la base de datos
+     * @return la lista con las enfermedades que trata el seguro popular
+     */
     public ArrayList<Causes> GetCauses(){
 
         Add("Vacunación Contra Tuberculosis (B.C.G.)","Intervenciones de salud pública");
@@ -311,6 +319,10 @@ public class Constants {
         return causes;
     }
 
+    /**
+     * Se agregan las enfermedades a la base de datos
+     * @return la lista con las enfermedades que trata el seguro popular
+     */
     public ArrayList<Causes> GetGastosCatastroficos(){
         Add("Peso Extremadamente Bajo Al Nacer","UCIN");
         Add("Síndrome  De Dificultad  Respiratoria Del Recién Nacido","UCIN");
@@ -384,6 +396,10 @@ public class Constants {
         return causes;
     }
 
+    /**
+     * Se agregan las enfermedades a la base de datos
+     * @return la lista con las enfermedades que trata el seguro popular
+     */
     public ArrayList<Causes> GetSeguroMedico(){
 
         Add("Tuberculosis Del Sistema Nervioso","Ciertas  enfermedades infecciosas y parasitarias");
@@ -538,7 +554,12 @@ public class Constants {
 
         return causes;
     }
-    
+
+    /**
+     * Se agreaga la enfermedad a la lista
+     * @param intervencion
+     * @param tipo
+     */
     private void Add(String intervencion, String tipo){
         Causes c = new Causes();
         c.intervencion = intervencion;
@@ -546,6 +567,10 @@ public class Constants {
         causes.add(c);
     }
 
+    /**
+     * Se agregan las enfermedades a la base de datos
+     * @return la lista con las enfermedades que trata el seguro popular
+     */
     public ArrayList<String> GetIntervencionesCauses(){
 
         AddIntervenciones("Vacunación Contra Tuberculosis (B.C.G.)");
@@ -839,6 +864,10 @@ public class Constants {
         return intervenciones;
     }
 
+    /**
+     * Se agregan las enfermedades a la base de datos
+     * @return la lista con las enfermedades que trata el seguro popular
+     */
     public ArrayList<String> GetIntervencionesGastosCatastroficos(){
 
         AddIntervenciones("Peso Extremadamente Bajo Al Nacer");
@@ -913,6 +942,10 @@ public class Constants {
         return intervenciones;
     }
 
+    /**
+     * Se agregan las enfermedades a la base de datos
+     * @return la lista con las enfermedades que trata el seguro popular
+     */
     public ArrayList<String> GetIntervencionesSeguroMedico(){
 
         AddIntervenciones("Tuberculosis Del Sistema Nervioso");
@@ -1068,6 +1101,10 @@ public class Constants {
         return intervenciones;
     }
 
+    /**
+     * Se agregan las intervenciones a la lista
+     * @param intervencion inetervencion
+     */
     private void AddIntervenciones(String intervencion){
         intervenciones.add(intervencion);
     }

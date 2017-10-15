@@ -4,10 +4,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.clustering.ClusterItem;
 
 /**
- * Created by maste on 08/03/2017.
+ * Propiedad de la latitud y longitud del cluster de marcadores
  */
 
 public class Items implements ClusterItem {
+
     private final LatLng mPosition;
 
     public Items(double lat, double lng) {

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by maste on 14/07/2016.
+ * Adapter para llenar la el listview de busqueda de dependencias de salud
  */
 public class BusquedaAdapter extends BaseAdapter implements Filterable {
     Context c;

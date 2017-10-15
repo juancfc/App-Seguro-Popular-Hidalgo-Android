@@ -6,13 +6,15 @@ import android.util.Log;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
 /**
- * Created by maste on 11/06/2017.
+ * Refreshing GCM Registration Token
  */
-
 public class MyInstanceIDService extends FirebaseInstanceIdService {
 
     private static final String TAG = "MyInstanceIDService";
 
+    /**
+     * Refreshing GCM Registration Token
+     */
     @Override
     public void onTokenRefresh() {
 

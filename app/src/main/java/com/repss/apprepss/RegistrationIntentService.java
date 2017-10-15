@@ -11,7 +11,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.microsoft.windowsazure.messaging.NotificationHub;
 
 /**
- * Created by maste on 14/10/2016.
+ * Se registra el dispositivo a Firebase Cloud Messaging
  */
 public class RegistrationIntentService extends IntentService {
 
@@ -19,14 +19,16 @@ public class RegistrationIntentService extends IntentService {
 
     private NotificationHub hub;
 
-    Perfil perfil;
 
     public RegistrationIntentService() {
         super(TAG);
-        perfil = new Perfil();
 
     }
 
+    /**
+     * Se registra el dispositivo a FCM asignando los tags almacenados en la configuración de la app para enviar notificaciones a este dispositivo
+     * @param intent
+     */
     @Override
     protected void onHandleIntent(Intent intent) {
 

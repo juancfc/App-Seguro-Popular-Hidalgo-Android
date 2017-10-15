@@ -1,7 +1,7 @@
 package com.repss.apprepss;
 
 /**
- * Created by maste on 14/03/2017.
+ * Classe con las propiedades del objeto Causes
  */
 
 public class Causes {

@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * Muestra la información del gestor a cargo de la unidad de salud
+ */
 public class InformacionGestor extends AppCompatActivity {
 
     ImageView gestorImageView,segundoGestorImageView;
@@ -16,6 +19,10 @@ public class InformacionGestor extends AppCompatActivity {
 
     String gestor, unidad;
 
+    /**
+     * Se muestra la foto y la informacion del gestor
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -334,6 +341,9 @@ public class InformacionGestor extends AppCompatActivity {
 
     }
 
+    /**
+     * Metodo que realiza el evento del boton back y que reliza la navegación hacia atras
+     */
     @Override
     public void onBackPressed() {
         startActivity(new Intent(InformacionGestor.this, MainActivity.class));

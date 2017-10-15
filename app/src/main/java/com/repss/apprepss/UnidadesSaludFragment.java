@@ -47,6 +47,9 @@ import com.roughike.bottombar.BottomBar;
 
 import java.util.ArrayList;
 
+/**
+ * Se muestra el mapa con la ubicación de las unidades de salud
+ */
 public class UnidadesSaludFragment extends Fragment implements LocationListener {
 
     DbHelper helper;
@@ -65,13 +68,18 @@ public class UnidadesSaludFragment extends Fragment implements LocationListener 
     GoogleMap map;
 
     public UnidadesSaludFragment() {
-        // Required empty public constructor
     }
 
+    /**
+     * Se muestran losmarcadores con la ubicación de las unidades de salud
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_unidades_salud, container, false);
 
         SharedPreferences settings = getActivity().getSharedPreferences("UserSettings", Context.MODE_PRIVATE);
@@ -264,6 +272,11 @@ public class UnidadesSaludFragment extends Fragment implements LocationListener 
     }
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+
+    /**
+     * Se revisan los permisos para utilizar el gps
+     * @return
+     */
     public boolean checkLocationPermission(){
         if (ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION)
@@ -317,11 +330,21 @@ public class UnidadesSaludFragment extends Fragment implements LocationListener 
         mapView.onLowMemory();
     }
 
+    /**
+     * Se creael menú de opciones
+     * @param menu
+     * @param inflater
+     */
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         miSave = menu.findItem(R.id.action_search);
     }
 
+    /**
+     * Evento para navegar a la sección de búsqueda
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -335,6 +358,10 @@ public class UnidadesSaludFragment extends Fragment implements LocationListener 
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Se obtiene la ubicación del usuario y se navega en el mapa a esa ubicación
+     * @param location
+     */
     @Override
     public void onLocationChanged(Location location) {
         latitud = location.getLatitude();

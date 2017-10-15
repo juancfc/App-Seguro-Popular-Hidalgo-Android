@@ -19,6 +19,9 @@ import android.view.MenuItem;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
+/**
+ *
+ */
 public class MainActivity extends AppCompatActivity {
 
     Toolbar myToolbar;
@@ -32,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     CentrosAfiliacionFragment afiliacion = new CentrosAfiliacionFragment();
     MasOpcionesFragment opciones = new MasOpcionesFragment();
 
+    /**
+     * Manejo de los tabs de la pagina principañ
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,74 +81,15 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-        /*mBottomBar = BottomBar.attach(this, savedInstanceState);
-        mBottomBar.noTopOffset();
-        mBottomBar.setMaxFixedTabs(2);
-
-
-
-        mBottomBar.setItemsFromMenu(R.menu.bottombar_menuds, new OnMenuTabClickListener() {
-            @Override
-            public void onMenuTabSelected(@IdRes int menuItemId) {
-                final FragmentManager fragmentManager = getSupportFragmentManager();
-                final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                if (menuItemId == R.id.bottomBarItemInfo) {
-                    fragmentTransaction.replace(R.id.activity_main, usuario);
-
-                }
-                else if (menuItemId == R.id.bottomBarItemDependenciasSalud) {
-                    fragmentTransaction.replace(R.id.activity_main, unidades);
-                    miSave.setVisible(true);
-                }
-                else if (menuItemId == R.id.bottomBarItemCentrosAfiliacion) {
-                    fragmentTransaction.replace(R.id.activity_main, afiliacion);
-                    miSave.setVisible(true);
-                }
-                else if (menuItemId == R.id.bottomBarItemMas) {
-                    fragmentTransaction.replace(R.id.activity_main, opciones);
-                    miSave.setVisible(false);
-                }
-                fragmentTransaction.commit();
-
-                if(miSave != null){
-                    if(mBottomBar.getCurrentTabPosition() == 0){
-                        miSave.setVisible(false);
-                    }else if(mBottomBar.getCurrentTabPosition() == 1){
-                        miSave.setVisible(true);
-                    }else if(mBottomBar.getCurrentTabPosition() == 2){
-                        miSave.setVisible(true);
-                    }else if(mBottomBar.getCurrentTabPosition() == 3){
-                        miSave.setVisible(false);
-                    }
-                }
-                /*else if (menuItemId == R.id.bottomBarItemMas) {
-                    tipo = 3;
-                    lnrLayoutOpciones.setVisibility(View.VISIBLE);
-                    rltLayoutMapa.setVisibility(View.GONE);
-                }*/
-
-            /*
-            ]
-            @Override
-            public void onMenuTabReSelected(@IdRes int menuItemId) {
-                if (menuItemId == R.id.bottomBarItemDependenciasSalud) {
-
-                }
-            }
-
-        });
-
-
-        mBottomBar.mapColorForTab(0, "#ba0c2f");
-        mBottomBar.mapColorForTab(1,"#ba0c2f");
-        mBottomBar.mapColorForTab(2, "#ba0c2f");
-        mBottomBar.mapColorForTab(3,"#ba0c2f");*/
 
             navigation.setSelectedItemId(R.id.bottomBarItemInfo);
     }
 
 
 
+    /**
+     * Inserción de las unidades de salud a la bd
+     */
     public void insertCS(Context context) {
         manager = new DataBaseManager(getApplicationContext());
         helper = new DbHelper(getApplicationContext());
@@ -152,88 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (cursor.getCount() < 1) {
 
-            /*manager.InsertCS("ESI 1  MINERAL DE LA REFORMA","HGSSA015795","SSA","MINERAL DE LA REFORMA","PACHUQUILLA","UNIDAD DE CONSULTA EXTERNA","VENUSTIANO CARRANZA NO. 9","42180","7717195612","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.0722","-98.6958","Lic. Carlos Valentín Piña Orozco","Jurisdicción No. I Pachuca");
-            manager.InsertCS("ESI 1  MINERAL DEL MONTE","HGSSA015754","SSA","MINERAL DEL MONTE","MINERAL DEL MONTE","UNIDAD DE CONSULTA EXTERNA","FRANCISCO I. MADERO S/N BARRIO STA. TERESA","42130","7717970769","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.1359","-98.6745","Lic. Carlos Valentín Piña Orozco","Jurisdicción No. I Pachuca");
-            manager.InsertCS("ESI 1  SAN AGUSTIN TLAXIACA","HGSSA016425","SSA","SAN AGUSTÍN TLAXIACA","SAN AGUSTÍN TLAXIACA","UNIDAD DE CONSULTA EXTERNA","AV. FRANCISO I. MADERO S/N COL. CENTRO","42160","7437419316","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.1162","-98.8897","Lic. Carlos Valentín Piña Orozco","Jurisdicción No. I Pachuca");
-            manager.InsertCS("ESI 1  SINGUILUCAN","HGSSA015894","SSA","SINGUILUCAN","SANTA MARIA MATILDE","UNIDAD DE CONSULTA EXTERNA","EXPLANADA REVOLUCIÓN S/N","43780","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","19.9675","-98.5172","Lic. Nutri. Fabiola Martínez Fregozo ","Jurisdicción No. II Tulancingo");
-            manager.InsertCS("ESI 1  TULANCINGO","HGSSA015923","SSA","TULANCINGO DE BRAVO","TULANCINGO","UNIDAD DE CONSULTA EXTERNA","PROLONGACIÓN AV. JUÁREZ S/N","43630","7757557571","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.0755","-98.3706","Lic. Nutri. Fabiola Martínez Fregozo ","Jurisdicción No. II Tulancingo");
-            manager.InsertCS("ESI 2  SANTA MARÍA NATIVITAS","HGSSA017446","SSA","CUAUTEPEC DE HINOJOSA","SANTA MARÍA NATIVITAS","UNIDAD DE CONSULTA EXTERNA","ADOLFO LÓPEZ MATEOS NO. 8, CENTRO","43740","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.0377","-98.2959","Lic. Nutri. Fabiola Martínez Fregozo ","Jurisdicción No. II Tulancingo");
-            manager.InsertCS("ESI 2  SINGUILUCAN","HGSSA015906","SSA","SINGUILUCAN","SINGUILUCAN","UNIDAD DE CONSULTA EXTERNA","EXPLANADA REVOLUCIÓN S/N","43780","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","19.9675","-98.5172","Lic. Nutri. Fabiola Martínez Fregozo ","Jurisdicción No. II Tulancingo");
-            manager.InsertCS("ESI 2  TULANCINGO","HGSSA015935","SSA","TULANCINGO DE BRAVO","TULANCINGO","UNIDAD DE CONSULTA EXTERNA","PROLONGACIÓN AV. JUÁREZ S/N","43630","7757557571","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.0755","-98.3706","Lic. Nutri. Fabiola Martínez Fregozo ","Jurisdicción No. II Tulancingo");
-            manager.InsertCS("ESI 3  TECOCOMULCO","HGSSA017451","SSA","CUAUTEPEC DE HINOJOSA","TECOCOMULCO DE JUÁREZ","UNIDAD DE CONSULTA EXTERNA","CALLE BENITO JUÁREZ S/N","43740","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","19.9053","-98.3517","Lic. Nutri. Fabiola Martínez Fregozo ","Jurisdicción No. II Tulancingo");
-            manager.InsertCS("ESI 3  TULANCINGO","HGSSA015940","SSA","TULANCINGO DE BRAVO","TULANCINGO","UNIDAD DE CONSULTA EXTERNA","PROLONGACIÓN AV. JUÁREZ S/N","43630","7757557571","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.0755","-98.3706","Lic. Nutri. Fabiola Martínez Fregozo ","Jurisdicción No. II Tulancingo");
-            manager.InsertCS("ESI 4  TEPANTITLA","HGSSA017463","SSA","CUAUTEPEC DE HINOJOSA","TEPANTITLA","UNIDAD DE CONSULTA EXTERNA","AV. MADERO S/N","43740","7717119321","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.053077","-98.344438","Lic. Nutri. Fabiola Martínez Fregozo ","Jurisdicción No. II Tulancingo");
-            manager.InsertCS("ESI 1  CHAPANTONGO","HGSSA016022","SSA","CHAPANTONGO","CHAPANTONGO","UNIDAD DE CONSULTA EXTERNA","VALENTIN SANTIAGO S/N BARRIO GUADALUPE, CENTRO, CHAPANTONGO","42900","","Matutino","no","si","no","no","no","no","no","no","no","no","no","no","no","20.2885","-99.4107","Dra. Concepción Gomez Moreno","Jurisdicción No. IV Huichapan");
-            manager.InsertCS("ESI 1  HUICHAPAN","HGSSA016034","SSA","HUICHAPAN","HUICHAPAN","UNIDAD DE CONSULTA EXTERNA","DR. JOSÉ MA. RIVERA S/N, BARRIO SAN MATEO, HUICHAPAN","42900","","Matutino","no","si","no","no","no","no","no","no","no","no","no","no","no","20.3887","-99.6496","Dra. Concepción Gomez Moreno","Jurisdicción No. IV Huichapan");
-            manager.InsertCS("ESI 1  NOPALA DE VILLAGRAN","HGSSA016075","SSA","NOPALA DE VILLAGRÁN","NOPALA","UNIDAD DE CONSULTA EXTERNA","MADERO NO. 8, CENTRO, NOPALA DE VILLAGRAN","42470","","Matutino","no","si","no","no","no","no","no","no","no","no","no","no","no","20.2506","-99.6459","Dra. Concepción Gomez Moreno","Jurisdicción No. IV Huichapan");
-            manager.InsertCS("ESI 2  HUICHAPAN","HGSSA016046","SSA","HUICHAPAN","HUICHAPAN","UNIDAD DE CONSULTA EXTERNA","DR. JOSÉ MA. RIVERA S/N, BARRIO SAN MATEO, HUICHAPAN","42900","","Matutino","no","si","no","no","no","no","no","no","no","no","no","no","no","20.3886","-99.6495","Dra. Concepción Gomez Moreno","Jurisdicción No. IV Huichapan");
-            manager.InsertCS("ESI 3  HUICHAPAN","HGSSA016051","SSA","HUICHAPAN","HUICHAPAN","UNIDAD DE CONSULTA EXTERNA","DR. JOSÉ MA. RIVERA S/N, BARRIO SAN MATEO, HUICHAPAN","42900","","Matutino","no","si","no","no","no","no","no","no","no","no","no","no","no","20.3886","-99.6496","Dra. Concepción Gomez Moreno","Jurisdicción No. IV Huichapan");
-            manager.InsertCS("ESI 4  HUICHAPAN","HGSSA016063","SSA","HUICHAPAN","HUICHAPAN","UNIDAD DE CONSULTA EXTERNA","DR. JOSÉ MA. RIVERA S/N, BARRIO SAN MATEO, HUICHAPAN","42900","","Matutino","no","si","no","no","no","no","no","no","no","no","no","no","no","20.3886","-99.6495","Dra. Concepción Gomez Moreno","Jurisdicción No. IV Huichapan");
-            manager.InsertCS("ESI 1  CALNALÍ","HGSSA016553","SSA","CALNALI","CALNALI","UNIDAD DE CONSULTA EXTERNA","CUAUTHEMOC NO. 879 BARRIO TLALA, CALNALI","43230","7749742049","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.8974","-98.5803","T. S. Lizeth Monter Mohedano ","Jurisdicción No. IX Molango");
-            manager.InsertCS("ESI 1  CHICONCOAC","HGSSA016611","SSA","MOLANGO DE ESCAMILLA","MOLANGO","UNIDAD DE CONSULTA EXTERNA","LA LOCALIDAD NO CUENTA CON NOMBRES EN LAS CALLES","43140","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.982","-98.736","T. S. Lizeth Monter Mohedano ","Jurisdicción No. IX Molango");
-            manager.InsertCS("ESI 1  TLANCHINOL","HGSSA016722","SSA","TLANCHINOL","TLANCHINOL","UNIDAD DE CONSULTA EXTERNA","CARRETRA MÉXICO TAMPICO NO. 170, BARRIO VISTA HERMOSA TLANCHINOL","43150","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.9841","-98.6689","T. S. Lizeth Monter Mohedano ","Jurisdicción No. IX Molango");
-            manager.InsertCS("ESI 1 HUAZALINGO","HGSSA016582","SSA","HUAZALINGO","HUAZALINGO","UNIDAD DE CONSULTA EXTERNA","AV. MADERO S/N BARRIO CENTRO, HUAZALINGO","43070","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.9794","-98.5078","T. S. Lizeth Monter Mohedano ","Jurisdicción No. IX Molango");
-            manager.InsertCS("ESI 2  CALNALÍ","HGSSA016565","SSA","CALNALI","CALNALI","UNIDAD DE CONSULTA EXTERNA","CUAUTHEMOC NO. 879 BARRIO TLALA, CALNALI","43230","7749742049","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.8974","-98.5802","T. S. Lizeth Monter Mohedano ","Jurisdicción No. IX Molango");
-            manager.InsertCS("ESI 2  HUAZALINGO","HGSSA016594","SSA","HUAZALINGO","HUAZALINGO","UNIDAD DE CONSULTA EXTERNA","AV. MADERO S/N BARRIO CENTRO, HUAZALINGO","43070","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.9794","-98.5078","T. S. Lizeth Monter Mohedano ","Jurisdicción No. IX Molango");
-            manager.InsertCS("ESI 2  TLANCHINOL","HGSSA016710","SSA","TLANCHINOL","TLANCHINOL","UNIDAD DE CONSULTA EXTERNA","CARRETRA MÉXICO TAMPICO NO. 170, BARRIO VISTA HERMOSA TLANCHINOL","43150","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.9842","-98.669","T. S. Lizeth Monter Mohedano ","Jurisdicción No. IX Molango");
-            manager.InsertCS("ESI 3  HUAZALINGO","HGSSA016606","SSA","HUAZALINGO","HUAZALINGO","UNIDAD DE CONSULTA EXTERNA","AV. MADERO S/N BARRIO CENTRO, HUAZALINGO","43070","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.9794","-98.5078","T. S. Lizeth Monter Mohedano ","Jurisdicción No. IX Molango");
-            manager.InsertCS("ESI 3  PEZMATLAN","HGSSA016570","SSA","CALNALI","PEZMATLÁN","UNIDAD DE CONSULTA EXTERNA","BARRIO LA GRAVA, PEZMATLAN","43230","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.8953","-98.5453","T. S. Lizeth Monter Mohedano ","Jurisdicción No. IX Molango");
-            manager.InsertCS("ESI 3  TLANCHINOL","HGSSA016705","SSA","TLANCHINOL","TLANCHINOL","UNIDAD DE CONSULTA EXTERNA","CARRETRA MÉXICO TAMPICO NO. 170, BARRIO VISTA HERMOSA TLANCHINOL","43150","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.9842","-98.6689","T. S. Lizeth Monter Mohedano ","Jurisdicción No. IX Molango");
-            manager.InsertCS("ESI 1  JILIAPAN","HGSSA016244","SSA","PACULA","JILIAPAN","UNIDAD DE CONSULTA EXTERNA","JUNTO AL TELEBACHILLERATO","42250","7597231823","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.9811","-99.3436","C.D Sandra Godínez Chávez","Jurisdicción No. V Zimapan");
-            manager.InsertCS("ESI 1  TASQUILLO","HGSSA016396","SSA","TASQUILLO","TASQUILLO","UNIDAD DE CONSULTA EXTERNA","VICENTE AGUIRRE NO. 1 BARRIO SAN ANTONIO","42380","7597721261905","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.552","-99.3144","C.D Sandra Godínez Chávez","Jurisdicción No. V Zimapan");
-            manager.InsertCS("ESI 1  ZIMAPÁN","HGSSA016314","SSA","ZIMAPÁN","ZIMAPÁN","UNIDAD DE CONSULTA EXTERNA","H. COLEGIO MILITAR S/N","42230","7597282905","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.7368","-99.3799","C.D Sandra Godínez Chávez","Jurisdicción No. V Zimapan");
-            manager.InsertCS("ESI 2  JILIAPAN","HGSSA016256","SSA","PACULA","JILIAPAN","UNIDAD DE CONSULTA EXTERNA","JUNTO AL TELEBACHILLERATO","42250","7597231823","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.9811","-99.3436","C.D Sandra Godínez Chávez","Jurisdicción No. V Zimapan");
-            manager.InsertCS("ESI 2  ZIMAPÁN","HGSSA016326","SSA","ZIMAPÁN","ZIMAPÁN","UNIDAD DE CONSULTA EXTERNA","H. COLEGIO MILITAR S/N","42230","7597282905","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.7368","-99.3798","C.D Sandra Godínez Chávez","Jurisdicción No. V Zimapan");
-            manager.InsertCS("ESI 1  IXMIQUILPAN","HGSSA016360","SSA","IXMIQUILPAN","IXMIQUILPAN","UNIDAD DE CONSULTA EXTERNA","FCO. JAVIER MINA NO. 15 CENTRO","42300","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.4805","-99.2206","Dra. Argelia Villareal Flores","Jurisdicción No. VI Ixmiquilpan");
-            manager.InsertCS("ESI 1  ACTOPAN","HGSSA016401","SSA","ACTOPAN","ACTOPAN","UNIDAD DE CONSULTA EXTERNA","AV. 5 DE MAYO 185, COL. CHAPULTEPEC","42500","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.2633","-98.9424","","Jurisdicción No. VII Actopan");
-            manager.InsertCS("ESI 1  SAN AGUSTÍN METZQUITITLÁN","HGSSA016471","SSA","SAN AGUSTÍN METZQUITITLÁN","MEZQUITITLÁN","UNIDAD DE CONSULTA EXTERNA","CALLE ISABELA CATOLICA NO. 5","43380","7747421202","Todos los anteriores","si","si","no","no","no","no","no","no","no","no","no","no","no","20.5319","-98.637","Dr. Emanuel Nemorio Campa López","Jurisdicción No. VIII Metztitlan");
-            manager.InsertCS("ESI 1  TLAHUILTEPA","HGSSA016500","SSA","TLAHUILTEPA","TLAHUILTEPA","UNIDAD DE CONSULTA EXTERNA","FRENTE A LA TELESECUNDARIA","42300","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.924","-98.9492","Dr. Emanuel Nemorio Campa López","Jurisdicción No. VIII Metztitlan");
-            manager.InsertCS("ESI 2  TLAHUILTEPA","HGSSA016512","SSA","TLAHUILTEPA","TLAHUILTEPA","UNIDAD DE CONSULTA EXTERNA","FRENTE A LA TELESECUNDARIA","42300","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.924","-98.9493","Dr. Emanuel Nemorio Campa López","Jurisdicción No. VIII Metztitlan");
-            manager.InsertCS("ESI 3  TLAHUILTEPA","HGSSA016524","SSA","TLAHUILTEPA","TLAHUILTEPA","UNIDAD DE CONSULTA EXTERNA","FRENTE A LA TELESECUNDARIA","42300","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.924","-98.9492","Dr. Emanuel Nemorio Campa López","Jurisdicción No. VIII Metztitlan");
-            manager.InsertCS("ESI 4 SAN ANDRÉS MIRAFLORES","HGSSA016536","SSA","TLAHUILTEPA","SAN ANDRÉS MIRAFLORES","UNIDAD DE CONSULTA EXTERNA","JUNTO A LA ESCUELA PRIMARIA","42300","1151515510","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.8011","-99.0025","Dr. Emanuel Nemorio Campa López","Jurisdicción No. VIII Metztitlan");
-            manager.InsertCS("ESI 1  SAN FELIPE ORIZATLAN","HGSSA016961","SSA","SAN FELIPE ORIZATLÁN","ORIZATLÁN","UNIDAD DE CONSULTA EXTERNA","AV. NIÑOS HÉROES S/N","43020","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.1686","-98.6083","C.D. Mario Cerecedo Medina","Jurisdicción No. X Huejutla");
-            manager.InsertCS("ESI 11  LAS CHACAS","HGSSA016920","SSA","HUEJUTLA DE REYES","LAS CHACAS","UNIDAD DE CONSULTA EXTERNA","DOMICILIO CONOCIDO","43300","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.2108","-98.5253","C.D. Mario Cerecedo Medina","Jurisdicción No. X Huejutla");
-            manager.InsertCS("ESI 2  SAN FELIPE ORIZATLAN","HGSSA016973","SSA","SAN FELIPE ORIZATLÁN","ORIZATLÁN","UNIDAD DE CONSULTA EXTERNA","AV. NIÑOS HÉROES S/N","43020","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.1686","-98.6082","C.D. Mario Cerecedo Medina","Jurisdicción No. X Huejutla");
-            manager.InsertCS("ESI 3 SAN FELIPE ORIZATLÁN","HGSSA017241","SSA","SAN FELIPE ORIZATLÁN","ORIZATLÁN","UNIDAD DE CONSULTA EXTERNA","","43020","4833630747","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.168675","-98.605834","C.D. Mario Cerecedo Medina","Jurisdicción No. X Huejutla");
-            manager.InsertCS("ESI 4  SAN FELIPE ORIZATLAN","HGSSA016990","SSA","SAN FELIPE ORIZATLÁN","ORIZATLÁN","UNIDAD DE CONSULTA EXTERNA","AV. NIÑOS HÉROES S/N","43020","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.1686","-98.6083","C.D. Mario Cerecedo Medina","Jurisdicción No. X Huejutla");
-            manager.InsertCS("ESI 6  TEHUETLAN","HGSSA017603","SSA","HUEJUTLA DE REYES","TEHUETLÁN","UNIDAD DE CONSULTA EXTERNA","AV. JUÁREZ S/N","43300","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.0542","-98.5087","C.D. Mario Cerecedo Medina","Jurisdicción No. X Huejutla");
-            manager.InsertCS("ESI 7 TEHUETLÁN","HGSSA016862","SSA","HUEJUTLA DE REYES","TEHUETLÁN","UNIDAD DE CONSULTA EXTERNA","","43000","7898962107","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.054314","-98.50819","C.D. Mario Cerecedo Medina","Jurisdicción No. X Huejutla");
-            manager.InsertCS("ESI 8 HUEJUTLA DE REYES","HGSSA016891","SSA","HUEJUTLA DE REYES","HUEJUTLA DE REYES","UNIDAD DE CONSULTA EXTERNA","JAIME NUNO NO.21","43000","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.1581","-98.4458","C.D. Mario Cerecedo Medina","Jurisdicción No. X Huejutla");
-            manager.InsertCS("ESI 1  ALMOLOYA","HGSSA017031","SSA","ALMOLOYA","ALMOLOYA","UNIDAD DE CONSULTA EXTERNA","HIDALGO 2, ALMOLOYA HGO.","43740","","Matutino","no","no","no","no","no","no","no","no","no","no","no","no","no","19.703","-98.4029","Enf. Julio César Moreno Palomares ","Jurisdicción No. XI Apan");
-            manager.InsertCS("ESI 1  TEPEAPULCO","HGSSA017055","SSA","TEPEAPULCO","TEPEAPULCO","UNIDAD DE CONSULTA EXTERNA","AV 18 DE MARZO 54, TEPEAPULCO HGO.","43970","","Matutino","no","no","no","no","no","no","no","no","no","no","no","no","no","19.7861","-98.556","Enf. Julio César Moreno Palomares ","Jurisdicción No. XI Apan");
-            manager.InsertCS("ESI 1  ZEMPOALA","HGSSA017060","SSA","ZEMPOALA","ZEMPOALA","UNIDAD DE CONSULTA EXTERNA","HIDALGO 55, ZEMPOALA HGO.","43830","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","19.9144","-98.6674","Dra. Gabriela Alemán Susano","Jurisdicción No. XII Tizayuca");
-            manager.InsertCS("ESI 1  ACAXOCHITLÁN","HGSSA015824","SSA","ACAXOCHITLÁN","ACAXOCHITLÁN","UNIDAD DE CONSULTA EXTERNA","CALLE CUAUHTÉMOC S/N, BARRIO TLATEMPA","43720","7767520322","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.1597","-98.2036","Lic. Psic. Efrain Cabrera Escamilla ","Jurisdicción No. XIII Otomí Tepehua");
-            manager.InsertCS("ESI 1  HUEHUETLA","HGSSA017084","SSA","HUEHUETLA","HUEHUETLA","UNIDAD DE CONSULTA EXTERNA","CALLE FELIPE ANGELES COL. CENTRO S/NO.","43420","7747437252","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.4608","-98.0766","Lic. Psic. Efrain Cabrera Escamilla ","Jurisdicción No. XIII Otomí Tepehua");
-            manager.InsertCS("ESI 1  SAN BARTOLO TUTOTEPEC","HGSSA017142","SSA","SAN BARTOLO TUTOTEPEC","SAN BARTOLO TUTOTEPEC","UNIDAD DE CONSULTA EXTERNA","CARRETERA TULANCINGO-SAN BARTOLO S/N COL. MAGDALENA","43440","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.3935","-98.2052","Lic. Psic. Efrain Cabrera Escamilla ","Jurisdicción No. XIII Otomí Tepehua");
-            manager.InsertCS("ESI 1  TENANGO DE DORIA","HGSSA017282","SSA","TENANGO DE DORIA","TENANGO DE DORIA","UNIDAD DE CONSULTA EXTERNA","CALLE PRINCIPAL S/NO.","43480","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.3381","-98.2272","Lic. Psic. Efrain Cabrera Escamilla ","Jurisdicción No. XIII Otomí Tepehua");
-            manager.InsertCS("ESI 2  HUEHUETLA","HGSSA017096","SSA","HUEHUETLA","HUEHUETLA","UNIDAD DE CONSULTA EXTERNA","CALLE FELIPE ANGELES COL. CENTRO S/NO.","43420","7747437252","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.4608","-98.0766","Lic. Psic. Efrain Cabrera Escamilla ","Jurisdicción No. XIII Otomí Tepehua");
-            manager.InsertCS("ESI 2  SANTA MARÍA TEMAXCALAPA","HGSSA017306","SSA","TENANGO DE DORIA","SANTA MARÍA TEMAXCALAPA","UNIDAD DE CONSULTA EXTERNA","CONOCIDO SANTA MARIA TEMAXCALAPA","43480","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.3806","-98.1986","Lic. Psic. Efrain Cabrera Escamilla ","Jurisdicción No. XIII Otomí Tepehua");
-            manager.InsertCS("ESI 3  HUEHUETLA","HGSSA017101","SSA","HUEHUETLA","HUEHUETLA","UNIDAD DE CONSULTA EXTERNA","CALLE FELIPE ANGELES COL. CENTRO S/NO.","43420","7747437252","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.4607","-98.0765","Lic. Psic. Efrain Cabrera Escamilla ","Jurisdicción No. XIII Otomí Tepehua");
-            manager.InsertCS("ESI 3  SAN BARTOLO TUTOTEPEC","HGSSA017166","SSA","SAN BARTOLO TUTOTEPEC","SAN BARTOLO TUTOTEPEC","UNIDAD DE CONSULTA EXTERNA","CARRETERA TULANCINGO-SAN BARTOLO S/N COL. MAGDALENA","43440","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.3936","-98.2053","Lic. Psic. Efrain Cabrera Escamilla ","Jurisdicción No. XIII Otomí Tepehua");
-            manager.InsertCS("ESI 4  EL PARAÍSO","HGSSA017113","SSA","HUEHUETLA","EL PARAÍSO","UNIDAD DE CONSULTA EXTERNA","CONOCIDO EL PARAISO","43420","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.4328","-98.0828","Lic. Psic. Efrain Cabrera Escamilla ","Jurisdicción No. XIII Otomí Tepehua");
-            manager.InsertCS("ESI 5  SAN AMBROSIO","HGSSA017125","SSA","HUEHUETLA","SAN AMBROSIO","UNIDAD DE CONSULTA EXTERNA","CONOCIDO SAN  AMBROSIO","43420","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.5281","-98.0211","Lic. Psic. Efrain Cabrera Escamilla ","Jurisdicción No. XIII Otomí Tepehua");
-            manager.InsertCS("ESI 6  SAN BARTOLO TUTOTEPEC","HGSSA017195","SSA","SAN BARTOLO TUTOTEPEC","SAN BARTOLO TUTOTEPEC","UNIDAD DE CONSULTA EXTERNA","CARRETERA TULANCINGO-SAN BARTOLO S/N COL. MAGDALENA","43440","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.3937","-98.2052","Lic. Psic. Efrain Cabrera Escamilla ","Jurisdicción No. XIII Otomí Tepehua");
-            manager.InsertCS("ESI 8  SAN BARTOLO TUTOTEPEC","HGSSA017212","SSA","SAN BARTOLO TUTOTEPEC","SAN BARTOLO TUTOTEPEC","UNIDAD DE CONSULTA EXTERNA","CARRETERA TULANCINGO-SAN BARTOLO S/N COL. MAGDALENA","43440","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.3936","-98.2053","Lic. Psic. Efrain Cabrera Escamilla ","Jurisdicción No. XIII Otomí Tepehua");
-            manager.InsertCS("ESI 1   ACATLÁN","HGSSA015800","SSA","ACATLÁN","ACATLÁN","UNIDAD DE CONSULTA EXTERNA","INDEPENDENCIA NO. 2 Y 16 DE SEPTIEMBRE","43540","7757422306","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.1453","-98.44","Psic. Javier Enrique Estrada Aguado","Jurisdicción No. XV, Atotonilco El Grande");
-            manager.InsertCS("ESI 1  ATOTONILCO EL GRANDE","HGSSA015660","SSA","ATOTONILCO EL GRANDE","ATOTONILCO EL GRANDE","UNIDAD DE CONSULTA EXTERNA","AV. JORGE VIESCA PALMA NO. 102 CENTRO","43300","7747432356","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.2877","-98.6696","Psic. Javier Enrique Estrada Aguado","Jurisdicción No. XV, Atotonilco El Grande");
-            manager.InsertCS("ESI 1  HUASCA DE OCAMPO","HGSSA015701","SSA","HUASCA DE OCAMPO","HUASCA DE OCAMPO","UNIDAD DE CONSULTA EXTERNA","VICENTE GUERRERO NO. 2","43500","7717920108","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.2041","-98.5755","Psic. Javier Enrique Estrada Aguado","Jurisdicción No. XV, Atotonilco El Grande");
-            manager.InsertCS("ESI 1  MINERAL DEL CHICO","HGSSA015730","SSA","MINERAL DEL CHICO","MINERAL DEL CHICO","UNIDAD DE CONSULTA EXTERNA","AV. ALFONSO CORONAL DEL ROSAL S/N","42120","7717155489","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.2146","-98.7308","Psic. Javier Enrique Estrada Aguado","Jurisdicción No. XV, Atotonilco El Grande");
-            manager.InsertCS("ESI 1  OMITLÁN DE JUÁREZ","HGSSA015766","SSA","OMITLÁN DE JUÁREZ","OMITLÁN DE JUÁREZ","UNIDAD DE CONSULTA EXTERNA","JOSÉ MA. PÉREZ NO. 2","43560","7717922107","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.1698","-98.6487","Psic. Javier Enrique Estrada Aguado","Jurisdicción No. XV, Atotonilco El Grande");
-            manager.InsertCS("ESI 2  ATOTONILCO EL GRANDE","HGSSA015672","SSA","ATOTONILCO EL GRANDE","ATOTONILCO EL GRANDE","UNIDAD DE CONSULTA EXTERNA","AV. JORGE VIESCA PALMA NO. 102 CENTRO","43300","7747432356","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.2876","-98.6697","Psic. Javier Enrique Estrada Aguado","Jurisdicción No. XV, Atotonilco El Grande");
-            manager.InsertCS("ESI 2  HUASCA DE OCAMPO","HGSSA015713","SSA","HUASCA DE OCAMPO","HUASCA DE OCAMPO","UNIDAD DE CONSULTA EXTERNA","VICENTE GUERRERO NO. 2","43500","7717920108","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","20.2041","-98.5755","Psic. Javier Enrique Estrada Aguado","Jurisdicción No. XV, Atotonilco El Grande");
-            manager.InsertCS("ESI 1  CHAPULHUACAN","HGSSA016092","SSA","CHAPULHUACÁN","CHAPULHUACÁN","UNIDAD DE CONSULTA EXTERNA","FRANCISCO SARABIA NO. 22","42280","4833782039","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.155","-98.9035","Psic. Genaro Eduardo Camacho","Jurisdicción No. XVI, Jacala");
-            manager.InsertCS("ESI 1  JACALA DE LEDEZMA","HGSSA016150","SSA","JACALA DE LEDEZMA","JACALA","UNIDAD DE CONSULTA EXTERNA","JUVENTINO ROSAS NO. 106","42200","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.0077","-99.1919","Psic. Genaro Eduardo Camacho","Jurisdicción No. XVI, Jacala");
-            manager.InsertCS("ESI 1  LA MISIÓN","HGSSA016186","SSA","LA MISIÓN","LA MISIÓN","UNIDAD DE CONSULTA EXTERNA","JUNTO A CONASUPO","42260","4412932091","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.0991","-99.1226","Psic. Genaro Eduardo Camacho","Jurisdicción No. XVI, Jacala");
-            manager.InsertCS("ESI 1  PISAFLORES","HGSSA016261","SSA","PISAFLORES","PISAFLORES","UNIDAD DE CONSULTA EXTERNA","CALLE INDEPENDENCIA S/N","24220","4833786004","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.1933","-99.0048","Psic. Genaro Eduardo Camacho","Jurisdicción No. XVI, Jacala");
-            manager.InsertCS("ESI 2  JACALA DE LEDEZMA","HGSSA016162","SSA","JACALA DE LEDEZMA","JACALA","UNIDAD DE CONSULTA EXTERNA","JUVENTINO ROSAS NO. 106","42200","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.0077","-99.1919","Psic. Genaro Eduardo Camacho","Jurisdicción No. XVI, Jacala");
-            manager.InsertCS("ESI 2  LA MISIÓN","HGSSA016191","SSA","LA MISIÓN","LA MISIÓN","UNIDAD DE CONSULTA EXTERNA","JUNTO A CONASUPO","42260","4412932091","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.0991","-99.1226","Psic. Genaro Eduardo Camacho","Jurisdicción No. XVI, Jacala");
-            manager.InsertCS("ESI 2  PISAFLORES","HGSSA016273","SSA","PISAFLORES","PISAFLORES","UNIDAD DE CONSULTA EXTERNA","CALLE INDEPENDENCIA S/N","24220","4833786004","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.1933","-99.0048","Psic. Genaro Eduardo Camacho","Jurisdicción No. XVI, Jacala");
-            manager.InsertCS("ESI 3  PISAFLORES","HGSSA017480","SSA","PISAFLORES","PISAFLORES","UNIDAD DE CONSULTA EXTERNA","CALLE INDEPENDENCIA S/N","24220","4833786004","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.2644","-98.9575","Psic. Genaro Eduardo Camacho","Jurisdicción No. XVI, Jacala");
-            manager.InsertCS("ESI 4  LA PEÑA","HGSSA017492","SSA","PISAFLORES","LA PEÑA","UNIDAD DE CONSULTA EXTERNA","CONOCIDO, ANTES DE LA IGLESIA","42220","","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.2061","-99.045","Psic. Genaro Eduardo Camacho","Jurisdicción No. XVI, Jacala");
-            manager.InsertCS("ESI 5  CHAPULHUACAN","HGSSA016133","SSA","CHAPULHUACÁN","CHAPULHUACÁN","UNIDAD DE CONSULTA EXTERNA","FRANCISCO SARABIA NO. 22","42280","4833782039","Matutino","si","no","no","no","no","no","no","no","no","no","no","no","no","21.1551","-98.9036","Psic. Genaro Eduardo Camacho","Jurisdicción No. XVI, Jacala");
-            manager.InsertCS("ESI 1  XOCHICOATLAN","HGSSA016746","SSA","XOCHICOATLÁN","XOCHICOATLÁN","UNIDAD DE CONSULTA EXTERNA","AV. HIDALGO S/N BARRIO HUITZITZILA, XOCHICOATLAN","43250","","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.7773","-98.6797","Dra. Denisse Sarahi García Ochoa","Jurisdicción No. XVII, Zacualtipán");
-            manager.InsertCS("ESI 2  TIANGUISTENGO","HGSSA016681","SSA","TIANGUISTENGO","TIANGUISTENGO","UNIDAD DE CONSULTA EXTERNA","AV. RUPERTO ALARCÓN S/N BARRIO CHICHITLA, TIANGUISTENGO","43270","7747440075","Matutino","si","si","no","no","no","no","no","no","no","no","no","no","no","20.7279","-98.633","Dra. Denisse Sarahi García Ochoa","Jurisdicción No. XVII, Zacualtipán");
-            */manager.InsertCS("ZIMAPAN","HGSSA004390","SSA","ZIMAPÁN","ZIMAPÁN","UNIDAD DE CONSULTA EXTERNA","AV. H. COLEGIO MILITAR S/N","42230","7597282905","Todas las anteriores","si","si","si","no","no","no","no","no","no","no","no","si","no","20.7335","-99.3766","C.D Sandra Godínez Chávez","Jurisdicción No. V Zimapan");
+            manager.InsertCS("ZIMAPAN","HGSSA004390","SSA","ZIMAPÁN","ZIMAPÁN","UNIDAD DE CONSULTA EXTERNA","AV. H. COLEGIO MILITAR S/N","42230","7597282905","Todas las anteriores","si","si","si","no","no","no","no","no","no","no","no","si","no","20.7335","-99.3766","C.D Sandra Godínez Chávez","Jurisdicción No. V Zimapan");
             manager.InsertCS("PROGRESO","HGSSA002652","SSA","PROGRESO DE OBREGÓN","PROGRESO","UNIDAD DE CONSULTA EXTERNA","16 DE SEPTIEMBRE NO.10","42730","7387250015","Todas las anteriores","si","si","si","no","no","no","no","no","no","no","no","si","no","20.2456","-99.1909","","Jurisdicción No. VII Actopan");
             manager.InsertCS("APAN","HGSSA000395","SSA","APAN","APAN","UNIDAD DE CONSULTA EXTERNA","NUEVO C.S.","43900","748179169564","Matutino","no","no","no","no","no","no","no","no","no","no","no","no","no","19.7092","-98.4517","Enf. Julio César Moreno Palomares ","Jurisdicción No. XI Apan");
             manager.InsertCS("EMILIANO ZAPATA","HGSSA001136","SSA","EMILIANO ZAPATA","EMILIANO ZAPATA","UNIDAD DE CONSULTA EXTERNA","NUEVA DIRECCION","43961","7489150355","Todas las anteriores","no","no","no","no","no","no","no","no","no","no","no","no","no","19.6589","-98.5476","Enf. Julio César Moreno Palomares ","Jurisdicción No. XI Apan");
@@ -798,6 +665,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Cerrar la app al presionar el botón back en la página principal
+     */
     @Override
     public void onBackPressed() {
         Intent startMain = new Intent(Intent.ACTION_MAIN);
@@ -807,6 +677,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(startMain);
     }
 
+    /**
+     * Se crea un menú de opciones
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -815,6 +690,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * Evento al selecionar el item del menú y navegar a la vista de la búsqueda
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

@@ -3,7 +3,7 @@ package com.repss.apprepss;
 import java.util.Date;
 
 /**
- * Created by maste on 27/05/2016.
+ * propiedades del objeto Beneficiario y sus setters and getters
  */
 public class Beneficiario {
 

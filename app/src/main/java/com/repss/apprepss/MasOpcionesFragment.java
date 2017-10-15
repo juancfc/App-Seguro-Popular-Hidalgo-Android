@@ -23,6 +23,9 @@ import com.microsoft.windowsazure.messaging.NotificationHub;
 
 import java.util.ArrayList;
 
+/**
+ * Muestra una lista con funciones de la app
+ */
 public class MasOpcionesFragment extends Fragment {
 
     AppSettings objAppSettings = new AppSettings();
@@ -33,6 +36,13 @@ public class MasOpcionesFragment extends Fragment {
         // Required empty public constructor
     }
 
+    /**
+     * Se asignan los valores a la lista a mostrar, se getiona la navegación de cada una de las opciones
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

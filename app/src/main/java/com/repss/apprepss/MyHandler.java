@@ -13,7 +13,7 @@ import android.support.v4.app.NotificationCompat;
 import com.microsoft.windowsazure.notifications.NotificationsHandler;
 
 /**
- * Created by maste on 14/10/2016.
+ * Se recibe la información de la push notification para procesarla y mostrarla
  */
 public class MyHandler extends NotificationsHandler {
 
@@ -22,6 +22,11 @@ public class MyHandler extends NotificationsHandler {
     NotificationCompat.Builder builder;
     Context ctx;
 
+    /**
+     * Se recibe la información de la notificación
+     * @param context
+     * @param bundle
+     */
     @Override
     public void onReceive(Context context, Bundle bundle) {
         ctx = context;
@@ -31,6 +36,11 @@ public class MyHandler extends NotificationsHandler {
 
     }
 
+    /**
+     * Se muestra la notificación, en caso de seleccionarla navega a página para mostrar los detalles
+     * @param msg
+     * @param title
+     */
     private void sendNotification(String msg,String title) {
 
         Intent intent = new Intent(ctx, NotificacionDetalles.class);

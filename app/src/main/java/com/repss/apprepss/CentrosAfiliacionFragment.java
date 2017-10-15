@@ -34,16 +34,18 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-
+/**
+ * Fragmento para mostrar el mapa con la ubicacion de los centros de afiliacion
+ */
 public class CentrosAfiliacionFragment extends Fragment implements LocationListener{
 
     DbHelper helper;
     String nombre;
     int tipo = 1;
     MapView mapView;
-    ArrayList<CentroAfiliación> lista = new ArrayList<CentroAfiliación>();
+    ArrayList<CentroAfiliacion> lista = new ArrayList<CentroAfiliacion>();
     Cursor cursor;
-    CentroAfiliación centroAfiliación;
+    CentroAfiliacion centroAfiliacion;
     MenuItem miSave;
     private LocationManager locationManager;
     double latitud,longitud;
@@ -56,6 +58,13 @@ public class CentrosAfiliacionFragment extends Fragment implements LocationListe
         // Required empty public constructor
     }
 
+    /**
+     * Se muestra la ubicacion del usuario en el mapa y se cargan los marcadores con la ubicacion de los centros de afiliacion
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -85,19 +94,19 @@ public class CentrosAfiliacionFragment extends Fragment implements LocationListe
 
 
             while (cursor.moveToNext()) {
-                centroAfiliación = new CentroAfiliación();
-                centroAfiliación.id = Integer.valueOf(cursor.getString(0));
-                centroAfiliación.Nombre = cursor.getString(1);
-                centroAfiliación.Direccion = cursor.getString(2);
-                centroAfiliación.Telefono = cursor.getString(3);
-                centroAfiliación.Responsable = cursor.getString(4);
-                centroAfiliación.TelefonoResponsable = cursor.getString(5);
-                centroAfiliación.Horario = cursor.getString(6);
-                centroAfiliación.Correo = cursor.getString(7);
-                centroAfiliación.Latitud = cursor.getString(8);
-                centroAfiliación.Longitud = cursor.getString(9);
+                centroAfiliacion = new CentroAfiliacion();
+                centroAfiliacion.id = Integer.valueOf(cursor.getString(0));
+                centroAfiliacion.Nombre = cursor.getString(1);
+                centroAfiliacion.Direccion = cursor.getString(2);
+                centroAfiliacion.Telefono = cursor.getString(3);
+                centroAfiliacion.Responsable = cursor.getString(4);
+                centroAfiliacion.TelefonoResponsable = cursor.getString(5);
+                centroAfiliacion.Horario = cursor.getString(6);
+                centroAfiliacion.Correo = cursor.getString(7);
+                centroAfiliacion.Latitud = cursor.getString(8);
+                centroAfiliacion.Longitud = cursor.getString(9);
 
-                lista.add(centroAfiliación);
+                lista.add(centroAfiliacion);
             }
         }
 
@@ -133,7 +142,7 @@ public class CentrosAfiliacionFragment extends Fragment implements LocationListe
                     googleMap.setMyLocationEnabled(true);
                 }
 
-                for(CentroAfiliación centro : lista) {
+                for(CentroAfiliacion centro : lista) {
                     if(centro.Nombre.equals("Coordinación Estatal Pachuca")){
                         googleMap.addMarker(new MarkerOptions().position(new LatLng(Float.valueOf(centro.Latitud), Float.valueOf(centro.Longitud))).title(centro.Nombre)).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
                     }
@@ -164,7 +173,7 @@ public class CentrosAfiliacionFragment extends Fragment implements LocationListe
                     @Override
                     public void onInfoWindowClick(Marker marker) {
 
-                        for(CentroAfiliación centro : lista) {
+                        for(CentroAfiliacion centro : lista) {
                             if(centro.Nombre.equals(nombre)){
                                 Intent detalles = new Intent(getContext(), DependenciaDetalles.class);
                                 detalles.putExtra("name", centro.Nombre);
@@ -191,6 +200,11 @@ public class CentrosAfiliacionFragment extends Fragment implements LocationListe
     }
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+
+    /**
+     * Se piden permisos para poder utilizar el gps
+     * @return regresa si el permiso fue otorgado
+     */
     public boolean checkLocationPermission(){
         if (ContextCompat.checkSelfPermission(getActivity(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION)

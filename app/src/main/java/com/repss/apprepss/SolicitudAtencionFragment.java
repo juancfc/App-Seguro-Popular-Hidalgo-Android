@@ -15,17 +15,22 @@ import android.widget.ImageView;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Se muestra un formulario para despues enviarlo por correo y un vículo a la app del telefono para marcar un número designado
  */
 public class SolicitudAtencionFragment extends Fragment {
 
     EditText edtContacto, edtDenuncia;
 
     public SolicitudAtencionFragment() {
-        // Required empty public constructor
     }
 
-
+    /**
+     * Eventos para la navegación a la app de teléfono pasando el número, también se realiza el envío de la información del formulario a un correo
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * Created by maste on 12/05/2016.
+ * Nombres, columnas y conformación de las tablas en la base de dtos local
  */
 public class DataBaseManager {
     private static final String TABLE_NAME_CS = "dependencias_salud";
@@ -153,11 +153,46 @@ public class DataBaseManager {
     private DbHelper helper;
     private SQLiteDatabase db;
 
+    /**
+     * Contructor para inicializar la base de daatos
+     * @param context Contexto de la actividad
+     */
     public DataBaseManager(Context context) {
         helper = new DbHelper(context);
         db = helper.getWritableDatabase();
     }
 
+    /**
+     * Se conjunta los datos para poder insertarlo a la bd
+     * @param nombre
+     * @param clues
+     * @param clave
+     * @param municipio
+     * @param localidad
+     * @param tipoEstablecimiento
+     * @param direccion
+     * @param codigoPostal
+     * @param telefono
+     * @param horario
+     * @param servicio1
+     * @param servicio2
+     * @param servicio3
+     * @param servicio4
+     * @param servicio5
+     * @param servicio6
+     * @param servicio7
+     * @param servicio8
+     * @param servicio9
+     * @param servicio10
+     * @param servicio11
+     * @param servicio12
+     * @param servicio13
+     * @param latitud
+     * @param longitud
+     * @param gestor
+     * @param unidad
+     * @return los datos agrupados a insertar
+     */
     public ContentValues GenerateContentValuesCS(String nombre, String clues, String clave, String municipio, String localidad,
                                                  String tipoEstablecimiento, String direccion,
                                                  String codigoPostal, String telefono,String horario, String servicio1, String servicio2,
@@ -197,6 +232,19 @@ public class DataBaseManager {
         return values;
     }
 
+    /**
+     * Se conjunta los datos para poder insertarlo a la bd
+     * @param nombre
+     * @param direccion
+     * @param telefono
+     * @param responsable
+     * @param telefonoResponsable
+     * @param horario
+     * @param correo
+     * @param latitud
+     * @param longitud
+     * @return los datos agrupados a insertar
+     */
     public ContentValues GenerateContentValuesCA(String nombre, String direccion,String telefono, String responsable, String telefonoResponsable,String horario,String correo,String latitud, String longitud)
     {
         ContentValues values = new ContentValues();
@@ -213,6 +261,11 @@ public class DataBaseManager {
         return values;
     }
 
+    /**
+     * Se conjunta los datos para poder insertarlo a la bd
+     * @param nombre
+     * @return los datos agrupados a insertar
+     */
     public ContentValues GenerateContentValuesSintomas(String nombre)
     {
         ContentValues values = new ContentValues();
@@ -221,6 +274,14 @@ public class DataBaseManager {
         return values;
     }
 
+    /**
+     * Se conjunta los datos para poder insertarlo a la bd
+     * @param descripcion
+     * @param intensidad
+     * @param fecha
+     * @param sintomaId
+     * @return los datos agrupados a insertar
+     */
     public ContentValues GenerateContentValuesSintomasFisicos(String descripcion, String intensidad, String fecha, int sintomaId)
     {
         ContentValues values = new ContentValues();
@@ -232,6 +293,13 @@ public class DataBaseManager {
         return values;
     }
 
+    /**
+     * Se conjunta los datos para poder insertarlo a la bd
+     * @param tipo
+     * @param fecha
+     * @param sintomaId
+     * @return los datos agrupados a insertar
+     */
     public ContentValues GenerateContentValuesSintomasEmocionales(String tipo, String fecha, int sintomaId)
     {
         ContentValues values = new ContentValues();
@@ -242,6 +310,13 @@ public class DataBaseManager {
         return values;
     }
 
+    /**
+     * Se conjunta los datos para poder insertarlo a la bd
+     * @param titulo
+     * @param descripcion
+     * @param poliza
+     * @return los datos agrupados a insertar
+     */
     public ContentValues GenerateContentValuesNotificaciones(String titulo, String descripcion,String poliza)
     {
         ContentValues values = new ContentValues();
@@ -252,6 +327,11 @@ public class DataBaseManager {
         return values;
     }
 
+    /**
+     * Se conjunta los datos para poder insertarlo a la bd
+     * @param unidadId
+     * @return los datos agrupados a insertar
+     */
     public ContentValues GenerateContentValuesFavoritos(int unidadId)
     {
         ContentValues values = new ContentValues();
@@ -260,6 +340,36 @@ public class DataBaseManager {
         return values;
     }
 
+    /**
+     * Se insertan los datos en la bd
+     * @param nombre
+     * @param clues
+     * @param clave
+     * @param municipio
+     * @param localidad
+     * @param tipoEstablecimiento
+     * @param direccion
+     * @param codigoPostal
+     * @param telefono
+     * @param horario
+     * @param servicio1
+     * @param servicio2
+     * @param servicio3
+     * @param servicio4
+     * @param servicio5
+     * @param servicio6
+     * @param servicio7
+     * @param servicio8
+     * @param servicio9
+     * @param servicio10
+     * @param servicio11
+     * @param servicio12
+     * @param servicio13
+     * @param latitud
+     * @param longitud
+     * @param gestor
+     * @param unidad
+     */
     public void InsertCS(String nombre, String clues, String clave, String municipio, String localidad,
                          String tipoEstablecimiento, String direccion,
                          String codigoPostal, String telefono,String horario, String servicio1, String servicio2,
@@ -275,31 +385,70 @@ public class DataBaseManager {
                 servicio12, servicio13, latitud,  longitud, gestor,unidad));
     }
 
+    /**
+     * Se insertan los datos en la bd
+     * @param nombre
+     * @param direccion
+     * @param telefono
+     * @param responsable
+     * @param telefonoResponsable
+     * @param horario
+     * @param correo
+     * @param latitud
+     * @param longitud
+     */
     public void InsertCA(String nombre, String direccion,String telefono, String responsable, String telefonoResponsable,String horario,String correo,String latitud,String longitud)
     {
         db.insert(TABLE_NAME_CA, null, GenerateContentValuesCA(nombre, direccion, telefono, responsable, telefonoResponsable,horario,correo,latitud,longitud));
     }
 
+    /**
+     * Se insertan los datos en la bd
+     * @param nombre
+     */
     public void InsertSintomas(String nombre)
     {
         db.insert(TABLE_NAME_SINTOMAS, null, GenerateContentValuesSintomas(nombre));
     }
 
+    /**
+     * Se insertan los datos en la bd
+     * @param descripcion
+     * @param intensidad
+     * @param fecha
+     * @param sintomaId
+     */
     public void InsertSintomasFisicos(String descripcion,String intensidad, String fecha, int sintomaId)
     {
         db.insert(TABLE_NAME_SINTOMA_FISICO, null, GenerateContentValuesSintomasFisicos(descripcion, intensidad, fecha, sintomaId));
     }
 
+    /**
+     * Se insertan los datos en la bd
+     * @param tipo
+     * @param fecha
+     * @param sintomaId
+     */
     public void InsertSintomasEmocionales(String tipo, String fecha, int sintomaId)
     {
         db.insert(TABLE_NAME_SINTOMA_EMOCIONAL, null, GenerateContentValuesSintomasEmocionales(tipo, fecha, sintomaId));
     }
 
+    /**
+     * Se insertan los datos en la bd
+     * @param titulo
+     * @param descripcion
+     * @param poliza
+     */
     public void InsertNotificaciones(String titulo,String descripcion, String poliza)
     {
         db.insert(TABLE_NAME_NOTIFICACIONES, null, GenerateContentValuesNotificaciones(titulo, descripcion, poliza));
     }
 
+    /**
+     * Se insertan los datos en la bd
+     * @param unidadId
+     */
     public void InsertFavoritos(int unidadId)
     {
         db.insert(TABLE_NAME_FAVORITOS, null, GenerateContentValuesFavoritos(unidadId));

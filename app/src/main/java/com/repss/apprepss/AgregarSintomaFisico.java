@@ -17,6 +17,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+
+/**
+ * Activity donde se agregan sintomas fisicos
+ */
 public class AgregarSintomaFisico extends AppCompatActivity {
 
     DbHelper helper;
@@ -34,6 +38,10 @@ public class AgregarSintomaFisico extends AppCompatActivity {
 
     String Dolor;
 
+    /**
+     * Se crea la vista y se obtiene acceso a ella,  eventos para guardar, seleccionar un image view o para abrir un date picker
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,6 +152,9 @@ public class AgregarSintomaFisico extends AppCompatActivity {
         });
     }
 
+    /**
+     * Se actualiza la etiqueta del button con la fecha seleccionada en el date picker
+     */
     private void updateLabel() {
 
         String myFormat = "dd/MM/yyyy"; //In which you need put here
@@ -152,6 +163,9 @@ public class AgregarSintomaFisico extends AppCompatActivity {
         btnFecha.setText(sdf.format(myCalendar.getTime()));
     }
 
+    /**
+     * Evento del date picker para almacenar en una variable la fecha seleccionada
+     */
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
         @Override
@@ -166,6 +180,10 @@ public class AgregarSintomaFisico extends AppCompatActivity {
 
     };
 
+    /**
+     * se muestra la seleccion de un image view
+     * @param item item seleccionado de la lista de image view
+     */
     private void itemSelected(int item){
         switch (item){
             case 1:
@@ -225,6 +243,10 @@ public class AgregarSintomaFisico extends AppCompatActivity {
         }
     }
 
+    /**
+     * se crea un date picker para asignar la fecha
+     * @return regresa el date picker creado
+     */
     private DatePickerDialog datePickerDialog(){
         DatePickerDialog datePicker = new DatePickerDialog(AgregarSintomaFisico.this, date, myCalendar
                 .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),

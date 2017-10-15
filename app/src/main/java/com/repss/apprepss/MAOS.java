@@ -6,9 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
+/**
+ * Muestra el fragmento con el mapa de los centros de afiliación
+ */
 public class MAOS extends AppCompatActivity {
 
 
+    /**
+     * Muestra el fragmento
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

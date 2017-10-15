@@ -3,18 +3,17 @@ package com.repss.apprepss;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 /**
- * Created by maste on 25/10/2016.
+ * Se elimina el registro en FCM
  */
 public class UnregisterTags {
-
-
 
     public UnregisterTags(){
     }
 
+    /**
+     * Se elimina el registro en FCM
+     */
     public void Unregister(){
         String FCM_token = FirebaseInstanceId.getInstance().getToken();
-
-
     }
 }

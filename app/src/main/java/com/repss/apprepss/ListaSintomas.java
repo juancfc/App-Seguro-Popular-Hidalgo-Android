@@ -10,10 +10,17 @@ import android.support.v7.app.AppCompatActivity;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
+/**
+ * Se listan los sintomas guardados en la bd
+ */
 public class ListaSintomas extends AppCompatActivity {
 
     BottomBar mBottomBar;
 
+    /**
+     * Control de los tabs para mostrar síntomas físicos o emocionales
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +56,9 @@ public class ListaSintomas extends AppCompatActivity {
 
     }
 
+    /**
+     * Evento parala navegacion al momento de presionar el botón back
+     */
     @Override
     public void onBackPressed() {
         startActivity(new Intent(ListaSintomas.this,ContainerActivity.class).putExtra("opcion", 2));

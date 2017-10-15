@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-
+/**
+ * Muestra los detalles de la notificación
+ */
 public class NotificacionDetalles extends AppCompatActivity {
 
     TextView txvCardViewTitulo, txvCardViewDescripcion;
@@ -24,16 +26,16 @@ public class NotificacionDetalles extends AppCompatActivity {
     DataBaseManager manager;
 
 
+    /**
+     * Se muestra la información en los controles de la vista
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notificacion_detalles);
 
         final SharedPreferences settings = getSharedPreferences("UserSettings", Context.MODE_PRIVATE);
-
-
-
-
 
         titulo = getIntent().getStringExtra("Titulo");
         descripcion = getIntent().getStringExtra("Descripcion");

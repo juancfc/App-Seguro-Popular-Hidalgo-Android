@@ -17,6 +17,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+/**
+ * Se muestra un mapa con la ubicacion del centro deafiliación y muestra los detalle del mismo
+ */
 public class DependenciaDetalles extends AppCompatActivity implements OnMapReadyCallback {
 
     TextView txvNombre,txvDireccion,txvTelefono,txvResponsable,txvTelefonoResponsable,txvHorario,txvCorreo;
@@ -25,6 +28,10 @@ public class DependenciaDetalles extends AppCompatActivity implements OnMapReady
 
     int id;
 
+    /**
+     * Muestra los detalles del centro de afiliación  en la vista
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +73,10 @@ public class DependenciaDetalles extends AppCompatActivity implements OnMapReady
     }
 
 
+    /**
+     * Se muestra ek mapa con la ubiaccion del centro de afiliación y agrega un marcador
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         googleMap.getUiSettings().setScrollGesturesEnabled(false);

@@ -1,7 +1,7 @@
 package com.repss.apprepss;
 
 /**
- * Created by maste on 14/10/2016.
+ * Propiedades del objeto Notificaciones
  */
 public class Notificaciones {
 

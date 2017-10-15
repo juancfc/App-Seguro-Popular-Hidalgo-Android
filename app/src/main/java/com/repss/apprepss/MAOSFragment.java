@@ -34,6 +34,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
 
+/**
+ * Fragmento que muestra el mapa con los centros de afiliación en un mapa
+ */
 public class MAOSFragment extends Fragment implements LocationListener {
 
 
@@ -41,9 +44,9 @@ public class MAOSFragment extends Fragment implements LocationListener {
     String nombre;
     int tipo = 1;
     MapView mapView;
-    ArrayList<CentroAfiliación> lista = new ArrayList<CentroAfiliación>();
+    ArrayList<CentroAfiliacion> lista = new ArrayList<CentroAfiliacion>();
     Cursor cursor;
-    CentroAfiliación centroAfiliación;
+    CentroAfiliacion centroAfiliación;
     MenuItem miSave;
     private LocationManager locationManager;
     double latitud,longitud;
@@ -53,10 +56,16 @@ public class MAOSFragment extends Fragment implements LocationListener {
     GoogleMap map;
 
     public MAOSFragment() {
-        // Required empty public constructor
     }
 
 
+    /**
+     * Se obtiene la ubicacion del usuario, se obtiene la listade los centros de afiliacion, se obtiene el mapa, se agregan los marcadores con la ubicacions de los centros, y eventos para navegar a la información del centro o navegar a la app de google maps
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -84,7 +93,7 @@ public class MAOSFragment extends Fragment implements LocationListener {
 
 
             while (cursor.moveToNext()) {
-                centroAfiliación = new CentroAfiliación();
+                centroAfiliación = new CentroAfiliacion();
                 centroAfiliación.id = Integer.valueOf(cursor.getString(0));
                 centroAfiliación.Nombre = cursor.getString(1);
                 centroAfiliación.Direccion = cursor.getString(2);
@@ -132,7 +141,7 @@ public class MAOSFragment extends Fragment implements LocationListener {
                     googleMap.setMyLocationEnabled(true);
                 }
 
-                for(CentroAfiliación centro : lista) {
+                for(CentroAfiliacion centro : lista) {
                     if(centro.Nombre.equals("Coordinación Estatal Pachuca")){
                         googleMap.addMarker(new MarkerOptions().position(new LatLng(Float.valueOf(centro.Latitud), Float.valueOf(centro.Longitud))).title(centro.Nombre)).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
                     }
@@ -152,18 +161,12 @@ public class MAOSFragment extends Fragment implements LocationListener {
                     }
                 });
 
-        /*googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(LatLng latLng) {
-                crdInfoMarker.setVisibility(View.INVISIBLE);
-            }
-        });*/
 
                 googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                     @Override
                     public void onInfoWindowClick(Marker marker) {
 
-                        for(CentroAfiliación centro : lista) {
+                        for(CentroAfiliacion centro : lista) {
                             if(centro.Nombre.equals(nombre)){
                                 Intent detalles = new Intent(getContext(), DependenciaDetalles.class);
                                 detalles.putExtra("name", centro.Nombre);
@@ -190,6 +193,11 @@ public class MAOSFragment extends Fragment implements LocationListener {
     }
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+
+    /**
+     * Se revisa el permiso del uso de el gps
+     * @return la validación del permiso
+     */
     public boolean checkLocationPermission(){
         if (ContextCompat.checkSelfPermission(getActivity(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
@@ -199,13 +207,6 @@ public class MAOSFragment extends Fragment implements LocationListener {
             if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
                     android.Manifest.permission.ACCESS_FINE_LOCATION)) {
 
-                //TODO:
-                // Show an expanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-
-                //Prompt the user once explanation has been shown
-                //(just doing it here for now, note that with this code, no explanation is shown)
                 ActivityCompat.requestPermissions(getActivity(),
                         new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
                         MY_PERMISSIONS_REQUEST_LOCATION);
@@ -249,12 +250,22 @@ public class MAOSFragment extends Fragment implements LocationListener {
         mapView.onLowMemory();
     }
 
+    /**
+     * Se crea un menu en el toolbar
+     * @param menu
+     * @param inflater
+     */
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.maps_menu, menu);
         miSave = menu.findItem(R.id.action_search);
     }
 
+    /**
+     * Evento click del los items del menú en este caso para la navegación a la búsqueda
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -268,6 +279,10 @@ public class MAOSFragment extends Fragment implements LocationListener {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Evento para obtener la ubicación del dispositivo
+     * @param location
+     */
     @Override
     public void onLocationChanged(Location location) {
         latitud = location.getLatitude();

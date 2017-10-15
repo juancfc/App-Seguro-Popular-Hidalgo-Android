@@ -1,7 +1,7 @@
 package com.repss.apprepss;
 
 /**
- * Created by maste on 10/11/2016.
+ * Propiedades del objeto SintomasFisicos con sus getters and setters
  */
 public class SintomasFisicos {
     int id;

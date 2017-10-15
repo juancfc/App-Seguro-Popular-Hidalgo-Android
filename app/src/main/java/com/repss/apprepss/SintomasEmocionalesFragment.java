@@ -14,7 +14,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-
+/**
+ * Se muestra la lista con los sintomas emocionales almacenados en la bd
+ */
 public class SintomasEmocionalesFragment extends Fragment {
 
     ListView lstSintomasEmocionales;
@@ -32,6 +34,13 @@ public class SintomasEmocionalesFragment extends Fragment {
     }
 
 
+    /**
+     * Se carga la lista de sintomas en el control, tambien hay un botón para agregar un nuevo síntoma
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

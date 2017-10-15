@@ -6,6 +6,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+/**
+ * Activity que muestra los fragmentos que estan en la secciones de otros
+ */
 public class ContainerActivity extends AppCompatActivity {
 
     SolicitudAtencionFragment solicitud = new SolicitudAtencionFragment();
@@ -13,6 +16,10 @@ public class ContainerActivity extends AppCompatActivity {
     NotificacionesFragment notificacionesFragment = new NotificacionesFragment();
     FavoritosFragment favoritosFragment = new FavoritosFragment();
 
+    /**
+     * Se muestra el fragmento
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +42,10 @@ public class ContainerActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+
+    /**
+     * Methodo para realizar la navegacion hacia atras con el botón back
+     */
     public void onBackPressed() {
         startActivity(new Intent(ContainerActivity.this,MainActivity.class));
     }

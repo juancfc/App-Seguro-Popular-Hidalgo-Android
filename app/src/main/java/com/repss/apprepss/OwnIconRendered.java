@@ -14,10 +14,8 @@ import com.google.maps.android.clustering.view.DefaultClusterRenderer;
 import java.util.ArrayList;
 
 /**
- * Created by maste on 09/03/2017.
+ * Se agrupan los marcadores y se les asigna color dependiendo el marcador
  */
-
-
 public class OwnIconRendered extends DefaultClusterRenderer<Items> {
 
     GoogleMap googleMap;
@@ -28,6 +26,14 @@ public class OwnIconRendered extends DefaultClusterRenderer<Items> {
     DependenciaSalud dependenciaSalud;
     String _userClues;
 
+    /**
+     * Se asignan los parámetros a variables locales
+     * @param context
+     * @param map
+     * @param userClues
+     * @param clusterManager
+     * @param listaDS
+     */
     public OwnIconRendered(Context context, GoogleMap map, String userClues, ClusterManager<Items> clusterManager, ArrayList<DependenciaSalud> listaDS) {
         super(context, map, clusterManager);
 
@@ -37,14 +43,12 @@ public class OwnIconRendered extends DefaultClusterRenderer<Items> {
         _context = context;
     }
 
-    /*public OwnIconRendered(Context context, GoogleMap map, ClusterManager<Items> clusterManager, ArrayList<DependenciaSalud> listaDS) {
-        super(context, map, clusterManager);
 
-        googleMap = map;
-        _listaDS = listaDS;
-        _context = context;
-    }*/
-
+    /**
+     * Se obtiene las unidades de salud y se le asigna el color a los marcadores
+     * @param item
+     * @param markerOptions
+     */
     @Override
     protected void onBeforeClusterItemRendered(Items item, MarkerOptions markerOptions) {
 
@@ -89,11 +93,7 @@ public class OwnIconRendered extends DefaultClusterRenderer<Items> {
             }
 
 
-
-        /*if(dependenciaSalud.Clues.equals(_userClues)) {
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
-        }
-        else*/ if(dependenciaSalud.TipoEstablecimiento.equals("UNIDAD DE HOSPITALIZACIÓN")) {
+if(dependenciaSalud.TipoEstablecimiento.equals("UNIDAD DE HOSPITALIZACIÓN")) {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
         }else if(dependenciaSalud.TipoEstablecimiento.equals("UNIDAD DE CONSULTA EXTERNA")){
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));

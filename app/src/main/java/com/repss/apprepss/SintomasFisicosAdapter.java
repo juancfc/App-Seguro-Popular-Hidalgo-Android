@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by maste on 10/11/2016.
+ * Adaptador para el llenado de un control con items
  */
 public class SintomasFisicosAdapter extends BaseAdapter {
 
@@ -19,27 +19,53 @@ public class SintomasFisicosAdapter extends BaseAdapter {
     ArrayList<SintomasFisicos> sintomasFisicos;
     ArrayList<SintomasFisicos> filterList;
 
+    /**
+     * Se asignan los paramétros a variables locales
+     * @param ctx
+     * @param sintomasFisicos
+     */
     public SintomasFisicosAdapter(Context ctx, ArrayList<SintomasFisicos> sintomasFisicos) {
         this.c = ctx;
         this.sintomasFisicos = sintomasFisicos;
         this.filterList = sintomasFisicos;
     }
 
+    /**
+     * regresa el tamaño de la lista
+     * @return tamaño de la lista
+     */
     @Override
     public int getCount() {
         return sintomasFisicos.size();
     }
 
+    /**
+     * regresa el objeto
+     * @param position posición del objeto
+     * @return el objeto
+     */
     @Override
     public Object getItem(int position) {
         return sintomasFisicos.get(position);
     }
 
+    /**
+     * regresa el id del objeto
+     * @param position posición del objeto
+     * @return el id del objeto
+     */
     @Override
     public long getItemId(int position) {
         return sintomasFisicos.indexOf(getItem(position));
     }
 
+    /**
+     * Se asignan los valores a los controles de la vista
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return la vista del item
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

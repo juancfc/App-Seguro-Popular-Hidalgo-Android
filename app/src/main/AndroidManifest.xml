@@ -34,17 +34,9 @@
         <activity
             android:name=".Login"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity
-            android:name=".MapaCS"
-            android:screenOrientation="portrait" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".DependenciaDetalles"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".UsuarioActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".RequisitosActivity"
@@ -54,9 +46,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Busqueda"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".DiarioMedico"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AgregarSintoma"
@@ -89,9 +78,6 @@
         </receiver>
 
         <activity
-            android:name=".Prueba"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ListaSintomas"
             android:screenOrientation="portrait" />
         <activity
@@ -104,16 +90,12 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SolicitudAtencionActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ContainerActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".CausesActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".BeneficiosActivity" />
-        <activity android:name=".FavoritosActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -128,7 +110,6 @@
         <activity android:name=".TerminosActivity" />
         <activity android:name=".AvisoPrivacidad" />
         <activity android:name=".InformacionGestor" />
-        <activity android:name=".NoAfiliado" />
         <activity android:name=".MAOS" />
         <activity
             android:name=".Introduccion"

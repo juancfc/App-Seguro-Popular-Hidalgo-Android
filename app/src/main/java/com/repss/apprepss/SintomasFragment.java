@@ -15,7 +15,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-
+/**
+ * Se muestra la lista con los sintomas almacenados en la bd
+ */
 public class SintomasFragment extends Fragment {
 
     FloatingActionButton fabAgregarSintoma;
@@ -32,6 +34,13 @@ public class SintomasFragment extends Fragment {
         // Required empty public constructor
     }
 
+    /**
+     * Se carga la lista de sintomas en el control, tambien hay un botón para agregar un nuevo síntoma
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {

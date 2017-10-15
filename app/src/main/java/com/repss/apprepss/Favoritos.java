@@ -1,7 +1,7 @@
 package com.repss.apprepss;
 
 /**
- * Created by maste on 30/07/2017.
+ * Propiedades del objeto Favoritos
  */
 
 public class Favoritos {

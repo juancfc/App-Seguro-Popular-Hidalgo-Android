@@ -1,7 +1,7 @@
 package com.repss.apprepss;
 
 /**
- * Created by maste on 14/06/2016.
+ * Propiedades del objeto DependenciaSalud
  */
 public class DependenciaSalud {
 

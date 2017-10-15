@@ -12,36 +12,62 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by maste on 15/07/2016.
+ * Adapter para llenar el listview de busqueda de centros de afiliacion
  */
 public class AfiliacionAdapter extends BaseAdapter implements Filterable {
 
     Context c;
-    ArrayList<CentroAfiliación> centroAfiliacion;
+    ArrayList<CentroAfiliacion> centroAfiliacion;
     CustomFilter filter;
-    ArrayList<CentroAfiliación> filterList;
+    ArrayList<CentroAfiliacion> filterList;
 
-    public AfiliacionAdapter(Context ctx, ArrayList<CentroAfiliación> centroAfiliacion) {
+    /**
+     *Se asignan los parametros a variables locales para su uso
+     * @param ctx Contexto de la activity
+     * @param centroAfiliacion Lista con los centros de afiliación
+     */
+    public AfiliacionAdapter(Context ctx, ArrayList<CentroAfiliacion> centroAfiliacion) {
         this.c = ctx;
         this.centroAfiliacion = centroAfiliacion;
         this.filterList = centroAfiliacion;
     }
 
+    /**
+     * Regresa el tamaño de la lista de centros de afiliación
+     * @return tamaño de la lista de centros de afiliación
+     */
     @Override
     public int getCount() {
         return centroAfiliacion.size();
     }
 
+    /**
+     * Obtener objeto de la lista con el id especificado
+     * @param position posición del objeto que se quiere obtener
+     * @return regresa el objeto de busqueda
+     */
     @Override
     public Object getItem(int position) {
         return centroAfiliacion.get(position);
     }
 
+    /**
+     * Obtener el id del objeto con el id especificado
+     * @param position posición del objeto
+     * @return regresa el id
+     */
     @Override
     public long getItemId(int position) {
         return centroAfiliacion.indexOf(getItem(position));
     }
 
+    /**
+     * Se asignan los valores los controles de la vista
+     * @param position posición del objeto a asignar valores
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -58,6 +84,11 @@ public class AfiliacionAdapter extends BaseAdapter implements Filterable {
         return convertView;
     }
 
+
+    /**
+     * Obtener el filtro de la lista
+     * @return regresa el filtrado de datos
+     */
     @Override
     public Filter getFilter() {
 
@@ -68,9 +99,16 @@ public class AfiliacionAdapter extends BaseAdapter implements Filterable {
         return filter;
     }
 
+    /**
+     * Clase para realizar filtrado de items de la lista
+     */
     class CustomFilter extends Filter
     {
-
+        /**
+         * Filtro de los items dependiendo el texto ingresado
+         * @param constraint texto ingresado
+         * @return regresa los resultados
+         */
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
 
@@ -79,11 +117,11 @@ public class AfiliacionAdapter extends BaseAdapter implements Filterable {
             if(constraint != null && constraint.length() > 0){
                 constraint = constraint.toString().toUpperCase();
 
-                ArrayList<CentroAfiliación> filters = new ArrayList<CentroAfiliación>();
+                ArrayList<CentroAfiliacion> filters = new ArrayList<CentroAfiliacion>();
 
                 for (int i = 0;i < filterList.size();i++){
                     if(filterList.get(i).getNombre().toUpperCase().contains(constraint)){
-                        CentroAfiliación m = new CentroAfiliación(filterList.get(i).getNombre());
+                        CentroAfiliacion m = new CentroAfiliacion(filterList.get(i).getNombre());
 
                         filters.add(m);
                     }
@@ -98,10 +136,15 @@ public class AfiliacionAdapter extends BaseAdapter implements Filterable {
             return results;
         }
 
+        /**
+         * Se publican los resultados
+         * @param constraint texto ingresado
+         * @param results resultado de la busqueda
+         */
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
-            centroAfiliacion = (ArrayList<CentroAfiliación>) results.values;
+            centroAfiliacion = (ArrayList<CentroAfiliacion>) results.values;
             notifyDataSetChanged();
 
         }

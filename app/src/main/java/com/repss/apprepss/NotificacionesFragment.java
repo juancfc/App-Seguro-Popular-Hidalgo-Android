@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Se muestran la lista de notificaciones guardada en la bd
  */
 public class NotificacionesFragment extends Fragment {
 
@@ -40,7 +40,13 @@ public class NotificacionesFragment extends Fragment {
         // Required empty public constructor
     }
 
-
+    /**
+     * Se asigna la lista de notificaciones al listview y se realiza la navegacion a los detralles cuando se selecciona una notificación de la lista
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,7 +57,7 @@ public class NotificacionesFragment extends Fragment {
 
         try {
             mClient = new MobileServiceClient(
-                    "https://seguropopularapp.azurewebsites.net",
+                    "URL AZURE MOBILE APP",
                     getContext()
             );
 

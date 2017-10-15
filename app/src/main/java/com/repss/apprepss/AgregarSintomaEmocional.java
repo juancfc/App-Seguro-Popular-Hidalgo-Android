@@ -16,6 +16,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+/**
+ * Activity donde se agregan sintomas emocionales
+ */
 public class AgregarSintomaEmocional extends AppCompatActivity {
 
     DbHelper helper;
@@ -32,6 +35,10 @@ public class AgregarSintomaEmocional extends AppCompatActivity {
 
     String Emocional;
 
+    /**
+     * Se crea la vista y se obtiene acceso a ella,  eventos para guardar, seleccionar un image view o para abrir un date picker
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,6 +144,9 @@ public class AgregarSintomaEmocional extends AppCompatActivity {
         });
     }
 
+    /**
+     * Se actualiza la etiqueta del button con la fecha seleccionada en el date picker
+     */
     private void updateLabel() {
 
         String myFormat = "dd/MM/yyyy"; //In which you need put here
@@ -145,12 +155,14 @@ public class AgregarSintomaEmocional extends AppCompatActivity {
         btnFechaEmocional.setText(sdf.format(myCalendar.getTime()));
     }
 
+    /**
+     * Evento del date picker para almacenar en una variable la fecha seleccionada
+     */
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear,
                               int dayOfMonth) {
-            // TODO Auto-generated method stub
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -159,6 +171,10 @@ public class AgregarSintomaEmocional extends AppCompatActivity {
 
     };
 
+    /**
+     * se muestra la seleccion de un image view
+     * @param item item seleccionado de la lista de image view
+     */
     private void itemSelected(int item){
         switch (item){
             case 1:
@@ -218,6 +234,10 @@ public class AgregarSintomaEmocional extends AppCompatActivity {
         }
     }
 
+    /**
+     * se crea un date picker para asignar la fecha
+     * @return regresa el date picker creado
+     */
     private DatePickerDialog datePickerDialog(){
         DatePickerDialog datePicker = new DatePickerDialog(AgregarSintomaEmocional.this, date, myCalendar
                 .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),

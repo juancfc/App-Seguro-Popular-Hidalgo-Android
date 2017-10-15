@@ -44,10 +44,12 @@ import java.util.Date;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+/**
+ * Se realiza el inicio de sesión en la app
+ */
 public class Login extends AppCompatActivity {
 
     AppSettings appSettings = new AppSettings();
-    //Requests requestsSP = new Requests();
     Beneficiario beneficiario = new Beneficiario();
 
     EditText edtPoliza,edtCURP;
@@ -73,10 +75,6 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        //requestsSP = new RequestsSP();
-        //getActionBar().hide();
 
 
         insertCA(this);
@@ -95,7 +93,6 @@ public class Login extends AppCompatActivity {
         centrosAfiliacionFAB = (FloatingActionButton)findViewById(R.id.centrosAfiliacionFAB);
         requisitosFAB = (FloatingActionButton)findViewById(R.id.requisitosFAB);
         beneficiosFAB = (FloatingActionButton)findViewById(R.id.beneficiosFAB);
-        //noAfiliadoTextView = (TextView)findViewById(R.id.noAfiliadoTextView);
 
 
         txvIrCurp.setOnClickListener(new View.OnClickListener() {
@@ -129,13 +126,6 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        /*noAfiliadoTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Login.this, NoAfiliado.class));
-            }
-        });*/
-
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,13 +133,15 @@ public class Login extends AppCompatActivity {
 
                 new LoginService().execute();
 
-                //startActivity(new Intent(Login.this,MainActivity.class));
-
             }
         });
 
     }
 
+    /**
+     * Se insertan los centros de afiliación a la bd
+     * @param context
+     */
     public void insertCA(Context context) {
         manager = new DataBaseManager(getApplicationContext());
         helper = new DbHelper(getApplicationContext());
@@ -295,6 +287,9 @@ public class Login extends AppCompatActivity {
 
     }
 
+    /**
+     * Metodó asíncrono para iniciar sesión consultando el web service que almacena a los afiliados y registra a los dispositivos a un centro de notificaciones para recibir las alertas
+     */
     private class LoginService extends AsyncTask<Void,Void,Void> {
 
         @Override
@@ -454,44 +449,6 @@ public class Login extends AppCompatActivity {
                         });
 
                         queue.add(stringRequest);
-
-
-                        /*Intent properties = new Intent(Login.this, MapaCS.class);
-                        beneficiario.setStatus("Activo");
-                        appSettings.SaveLoginInfo(settings,"1314141414","1","Leonardo","Flores","Martinez","FLML800714HHGNPG04",beneficiario.getStatus(),"Hospital General Tulancingo","SLJAHKJ8932", "16/05/2017");
-                        startActivity(properties);
-
-                        if (requestsSP.Login(edtPoliza.getText().toString(),edtConsecutivo.getText().toString(),Login.this)) {
-
-                            Intent properties = new Intent(Login.this, MainActivity.class);
-                            if(getDate().before(beneficiario.getFechaVencimiento())){
-                                beneficiario.setStatus("Activo");
-                            }
-                            else{
-                                beneficiario.setStatus("Necesita Reafiliación");
-                            }
-
-                            if(Integer.valueOf(beneficiario.getEdad())>= 10 && Integer.valueOf(beneficiario.getEdad()) < 19 ){
-                                tag = "Adolescente";
-                            }else if (Integer.valueOf(beneficiario.getEdad())>= 19 && Integer.valueOf(beneficiario.getEdad()) < 59){
-                                if(beneficiario.getSexo().equals("Hombre"))
-                                    tag = "AdultoHombre";
-                                else {
-                                    tag = "AdultoMujer";
-                                }
-                            }else  if (Integer.valueOf(beneficiario.getEdad())>= 60){
-                                tag = "AdultoMayor";
-                            }
-
-                            appSettings.SaveLoginInfo(settings,beneficiario.getFolio(),beneficiario.getConsecutivo(),beneficiario.getNombres(),beneficiario.getApellidoPaterno(),beneficiario.getApellidoMaterno(),beneficiario.getCURP(),beneficiario.getStatus(),beneficiario.getDependenciaSalud(),beneficiario.getCLUES(), getDateVencimiento(beneficiario.getFechaVencimiento()), beneficiario.getSexo(), beneficiario.getEdad(), tag);
-                            NotificationsManager.handleNotifications(getApplicationContext(), NotificationSettings.SenderId, MyHandler.class);
-                            registerWithNotificationHubs();
-                            startActivity(properties);
-                        }
-                        else{
-                            btnLogin.setEnabled(true);
-                        }*/
-
                     }
                 }
             });
@@ -504,17 +461,29 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    /**
+     * Regresa la fecha actual
+     * @return fecha actual
+     */
     private Date getDate(){
         Calendar c = Calendar.getInstance();
         return c.getTime();
     }
 
+    /**
+     * regresa la fecha de vencimiento con el formato asignado
+     * @param fecha fecha de vencimiento
+     * @return fecha con formato
+     */
     private String getDateVencimiento(Date fecha){
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String fechaConFormato = sdf.format(fecha);
         return fechaConFormato;
     }
 
+    /**
+     *Cerrra la aplicación al presionar el botón back
+     */
     @Override
     public void onBackPressed() {
         Intent startMain = new Intent(Intent.ACTION_MAIN);
@@ -524,6 +493,10 @@ public class Login extends AppCompatActivity {
         startActivity(startMain);
     }
 
+    /**
+     * Revisa si el celular soporta los servicios de Google Play
+     * @return la confirmación o negación
+     */
     private boolean checkPlayServices() {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
         int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
@@ -541,8 +514,9 @@ public class Login extends AppCompatActivity {
         return true;
     }
 
-
-
+    /**
+     * Registro del dispositivo al centro de notificaciones
+     */
     public void registerWithNotificationHubs()
     {
         if (checkPlayServices()) {
@@ -552,6 +526,10 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    /**
+     * Muestra un toast con el mensaje designado en el parámetro
+     * @param notificationMessage
+     */
     public void ToastNotify(final String notificationMessage) {
         runOnUiThread(new Runnable() {
             @Override

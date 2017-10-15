@@ -10,34 +10,60 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by maste on 02/09/2016.
+ * Adaptador para el llenado de un control con items
  */
 public class SintomasAdapter extends BaseAdapter{
     Context c;
     ArrayList<Sintomas> sintomas;
     ArrayList<Sintomas> filterList;
 
+    /**
+     * Se asignan los paramétros a variables locales
+     * @param ctx
+     * @param sintomas
+     */
     public SintomasAdapter(Context ctx, ArrayList<Sintomas> sintomas) {
         this.c = ctx;
         this.sintomas = sintomas;
         this.filterList = sintomas;
     }
 
+    /**
+     * regresa el tamaño de la lista
+     * @return tamaño de la lista
+     */
     @Override
     public int getCount() {
         return sintomas.size();
     }
 
+    /**
+     * regresa el objeto
+     * @param position posición del objeto
+     * @return el objeto
+     */
     @Override
     public Object getItem(int position) {
         return sintomas.get(position);
     }
 
+    /**
+     * regresa el id del objeto
+     * @param position posición del objeto
+     * @return el id del objeto
+     */
     @Override
     public long getItemId(int position) {
         return sintomas.indexOf(getItem(position));
     }
 
+    /**
+     * Se asignan los valores a los controles de la vista
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return la vista del item
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

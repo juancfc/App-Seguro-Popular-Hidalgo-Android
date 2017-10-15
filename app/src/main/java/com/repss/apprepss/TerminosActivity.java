@@ -5,11 +5,17 @@ import android.os.Bundle;
 
 import com.github.barteksc.pdfviewer.PDFView;
 
-
+/**
+ * Activity que muestra los terminos y condiciones de la app
+ */
 public class TerminosActivity extends AppCompatActivity {
 
     public String pdfView;
 
+    /**
+     * Se carga el pdf en el control referenciado
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
